@@ -17,6 +17,6 @@ I have a keen interest in entrepreneurship, business building and investing. The
 
 Since I was young, I always loved to travel. Getting to know new places, new cultures and new people, and that hasn’t changed. I’ll jump into a plane or back of a truck at the smallest opportunity. Also love electronic music and love to DJ during the weekends. What’s not to like? I get to play my music in really loud speakers.
 
-As is customary around the Bay Area, I tend to keep my pet projects on [GitHub](https://github.com/spiermar).
+As is customary around the Bay Area, I tend to keep my side projects on [GitHub](https://github.com/spiermar).
 
-Contact me? Just shoot an email to [martin@overloaded.io](mailto:martin@overloaded.io)
+Contact me? Just shoot an email to [spiermar@gmail.com](mailto:spiermar@gmail.com)
