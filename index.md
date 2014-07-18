@@ -5,7 +5,7 @@ title: About
 
 # About
 
-<img alt src="http://s.gravatar.com/avatar/13a1278641724c45dd69b15077c7b7a1?s=140" class="avatar" width="140">
+<img alt src="http://www.gravatar.com/avatar/13a1278641724c45dd69b15077c7b7a1.png?s=140" class="avatar" width="140">
 
 So a while ago, I had to come up with the famous 160 character “about me”. This is what I got:
 
