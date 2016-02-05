@@ -53,7 +53,7 @@ I seldom blog about performance and related subjects @ [overloaded.io](http://ov
 
 # Mikrogramm
 
-I love electronic music. Time is lacking, but whenever possible, I try to record something new and fresh at my home studio. If it's not complete *crap*, it goes to SoundCloud.
+I love electronic music. Time is lacking, but whenever possible, I try to record something new and fresh at my home studio. If it's not complete *rubbish*, it goes to SoundCloud.
 
 [Mikrogramm @ SoundCloud](https://soundcloud.com/Mikrogramm)
 
