@@ -23,6 +23,12 @@ MyAdventure is a place to share your adventures with the world, from your weeken
 
 [myadventure.io](http://myadventure.io/)
 
+# d3-flame-graph
+
+A D3.js plugin that produces flame graphs from hierarchical data. Flame graphs are a visualization of profiled software, allowing the most frequent code-paths to be identified quickly and accurately.
+
+[d3-flame-graph](https://github.com/spiermar/d3-flame-graph)
+
 # Sthima
 
 Sthima is a software development company founded in 2005 in Porto Alegre, Brazil - with a single objective. Developing great software for companies that seek innovation and quality. If you are a startup or entrepreneur with a great idea, searching for a highly qualified team to make it a reality, Sthima is here to help! We take advantage of a fast and interactive development cycle, that begins with our designers creating the perfect interface, a great Minimum Viable Product (MVP) for you to test, to an application looks and feels exactly like you and your users want it!
