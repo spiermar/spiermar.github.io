@@ -1,5 +1,5 @@
 # Dependencies
-markdown:         redcarpet
+markdown:         kramdown
 pygments:         true
 redcarpet:
   extensions:     [smart]
@@ -10,20 +10,20 @@ permalink:        pretty
 # Setup
 title:            Martin Spier
 tagline:          'Performance Engineer'
-description:      'Performance Engineer @ Netflix. Investor. Occasional DJ. Addicted to Travel and Electronic Music.<br>Bay Area, CA'
-url:              http://perf.guru
+description:      'Performance Engineer @ Netflix. CTO @ HandsOn.TV. Investor. Occasional DJ. Addicted to Travel and Electronic Music.<br>Bay Area, CA'
+url:              http://martinspier.io
 
 author:
-  name:             'Martin Spier'
-  url:              https://twitter.com/spiermar
+  name:           'Martin Spier'
+  url:            https://twitter.com/spiermar
 
 paginate:         5
 
 # Custom vars
 version:          1.0.0
 
-github: 
+github:
   url:             https://github.com/spiermar
 
-linkedin: 
+linkedin:
   url:             https://www.linkedin.com/in/martinspier
