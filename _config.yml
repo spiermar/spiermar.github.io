@@ -1,23 +1,23 @@
 # Dependencies
 markdown:         kramdown
-pygments:         true
+highlander:       pygments
 redcarpet:
   extensions:     [smart]
+
+gems:             []
 
 # Permalinks
 permalink:        pretty
 
 # Setup
 title:            Martin Spier
-tagline:          'Performance Engineer'
-description:      'Performance Engineer @ Netflix. CTO @ HandsOn.TV. Investor. Occasional DJ. Addicted to Travel and Electronic Music.<br>Bay Area, CA'
+tagline:          'Carbon Based Lifeform'
+description:      'Performance Engineer @ Netflix.<br>CTO @ HandsOn.TV.<br>Founder of MyAdventure.<br>Entrepreneur. Investor.<br>Addicted to Travel and Electronic Music.<br>Bay Area, CA'
 url:              http://martinspier.io
 
 author:
   name:           'Martin Spier'
   url:            https://twitter.com/spiermar
-
-paginate:         5
 
 # Custom vars
 version:          1.0.0
@@ -27,3 +27,6 @@ github:
 
 linkedin:
   url:             https://www.linkedin.com/in/martinspier
+
+medium:
+  url:             https://medium.com/@mspier
