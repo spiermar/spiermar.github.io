@@ -5,7 +5,7 @@ title: Contact
 
 # Email
 
-That's probably the easiest way to get in touch. Unless I'm out traveling to some exotic island with no internet connection, chances are that I'll get back to you shortly. I like to keep a clean inbox.
+That's probably the easiest way to get in touch. Unless I'm out traveling to some exotic island with no internet connection, chances are that I'll get back to you shortly. I like to keep a clean inbox!
 
 Currently you can reach me at [spiermar@gmail.com](mailto:spiermar@gmail.com).
 
@@ -21,7 +21,7 @@ Follow me! I try not to overshare, but usually if I find something cool online, 
 
 # SlideShare
 
-I'm often invited to speak on conferences and events. I try to make my slides available at Slideshare.
+I'm often invited to speak at conferences and events. I try to make my slides available on SlideShare.
 
 Check out my [SlideShare profile](http://www.slideshare.net/spiermar).
 
@@ -31,4 +31,4 @@ Here is a link to my [Quora profile](http://www.quora.com/Martin-Spier).
 
 # Stack Overflow
 
-*Coming Soon!*
+*--- Coming Soon!*

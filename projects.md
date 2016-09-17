@@ -5,6 +5,14 @@ title: Projects
 
 Here you can find a few projects I'm currently involved with, in one way or another.
 
+# Mongol Rally
+
+In 2015 I completed the [Mongol Rally](http://www.theadventurists.com/mongol-rally/), driving over 12.000 miles, across 21 countries, over 2 months, for charity. It was one of the most amazing adventures I experienced so far, and hopefully, the start of something incredible! I'm still going over all the pictures and working on what will soon be a great series of posts on Medium. Follow the details on [Facebook](https://www.facebook.com/yakinaroundteam/) and our page, [yakinaround.com](http://yakinaround.com/).
+
+# Rickshaw Run
+
+*--- Coming Soon!*
+
 # Vector
 
 Vector is an open source on-host performance monitoring framework which exposes hand picked high resolution system and application metrics to every engineer’s browser. Having the right metrics available on-demand and at a high resolution is key to understand how a system behaves and correctly troubleshoot performance issues.
@@ -29,23 +37,19 @@ A D3.js plugin that produces flame graphs from hierarchical data. Flame graphs a
 
 [d3-flame-graph](https://github.com/spiermar/d3-flame-graph)
 
-# Sthima
+# stack-convert
 
-Sthima is a software development company founded in 2005 in Porto Alegre, Brazil - with a single objective. Developing great software for companies that seek innovation and quality. If you are a startup or entrepreneur with a great idea, searching for a highly qualified team to make it a reality, Sthima is here to help! We take advantage of a fast and interactive development cycle, that begins with our designers creating the perfect interface, a great Minimum Viable Product (MVP) for you to test, to an application looks and feels exactly like you and your users want it!
+A CLI tool to convert perf record stacks to JSON.
 
-[sthima.com](http://sthima.com/)
-
-# Mongol Rally
-
-In 2015 I completed the [Mongol Rally](http://www.theadventurists.com/mongol-rally/), driving over 12.000 miles, across 21 countries, over 2 months, for charity. It was one of the most amazing adventures I experienced so far, and hopefully, the start of something incredible! I'm still going over all the pictures and working on what will soon be a great series of posts on Medium. Follow the details on [Facebook](https://www.facebook.com/yakinaroundteam/) and our page, [yakinaround.com](http://yakinaround.com/).
+[node-stack-convert](https://github.com/spiermar/node-stack-convert)
 
 # http503.io
 
-*--- Comming Soon!*
+*--- Coming Soon!*
 
 # Algo-Trading
 
-*--- Comming Soon!*
+*--- Coming Soon!*
 
 # overloaded.io
 
