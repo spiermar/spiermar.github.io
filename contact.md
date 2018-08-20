@@ -7,7 +7,7 @@ title: Contact
 
 Easiest way to get in touch. Enless I'm out traveling to some exotic island with no internet access, chances are that I'll get back to you shortly. I like to keep a clean inbox!
 
-[spiermar@gmail.com](mailto:spiermar@gmail.com).
+[hello@martinspier.io](mailto:hello@martinspier.io).
 
 # LinkedIn
 
