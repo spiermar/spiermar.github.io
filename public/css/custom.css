@@ -1,0 +1,28 @@
+.hero-image {
+    /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/public/speaking.jpg");
+
+    /* Set a specific height */
+    height: 325px;
+
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.contact-form input {
+    font-size: 15px;
+}
+
+.contact-form textarea {
+    font-size: 15px;
+}
+
+.spacer {
+    margin-bottom: 10px;
+}
