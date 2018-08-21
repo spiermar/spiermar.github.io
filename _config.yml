@@ -11,8 +11,8 @@ permalink:        pretty
 
 # Setup
 title:            Martin Spier
-tagline:          'Carbon-based bipedal life form descended from an ape.'
-description:      'Performance Engineer @ Netflix.<br>Advisor @ monashees+.<br>Entrepreneur. Adventurer. Maker.<br>Addicted to Travel and Electronic Music.<br>Bay Area, CA'
+tagline:          'Making things fast again.'
+about:            'Performance Engineer @ Netflix.<br>Advisor @ monashees+.<br>Entrepreneur. Adventurer.<br>Addicted to Travel and Electronic Music.<br>Bay Area, CA'
 url:              http://martinspier.io
 
 author:
@@ -30,3 +30,6 @@ linkedin:
 
 medium:
   url:             https://medium.com/@mspier
+
+instagram:
+  url:             https://www.instagram.com/unchartedcorners

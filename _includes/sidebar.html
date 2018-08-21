@@ -1,6 +1,6 @@
 <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
      styles, `#sidebar-checkbox` for behavior. -->
-<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox" checked>
 
 <!-- Toggleable sidebar -->
 <div class="sidebar" id="sidebar">
@@ -9,8 +9,12 @@
   </div>
 
   <div class="sidebar-item">
-    <p>{{ site.description }}</p>
+    <p>{{ site.title }}</p>
   </div>
+
+  <!-- <div class="sidebar-item">
+    <p>{{ site.about }}</p>
+  </div> -->
 
   <nav class="sidebar-nav">
     <!-- <a class="sidebar-nav-item{% if page.title == "Home" %} active{% endif %}" href="/">Home</a> -->
@@ -29,10 +33,11 @@
         {% endif %}
       {% endif %}
     {% endfor %}
-    <a class="sidebar-nav-item" href="{{ site.author.url }}" target="_blank">Twitter</a>
-    <a class="sidebar-nav-item" href="{{ site.github.url }}" target="_blank">GitHub</a>
-    <a class="sidebar-nav-item" href="{{ site.medium.url }}" target="_blank">Medium</a>
-    <a class="sidebar-nav-item" href="{{ site.linkedin.url }}" target="_blank">LinkedIn</a>
+    <a class="sidebar-nav-item" href="{{ site.author.url }}" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+    <a class="sidebar-nav-item" href="{{ site.github.url }}" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    <a class="sidebar-nav-item" href="{{ site.medium.url }}" target="_blank"><i class="fab fa-medium"></i> Medium</a>
+    <a class="sidebar-nav-item" href="{{ site.linkedin.url }}" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <a class="sidebar-nav-item" href="{{ site.instagram.url }}" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
   </nav>
 
 </div>
