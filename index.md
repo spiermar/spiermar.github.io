@@ -5,14 +5,14 @@ title: About
 
 <img alt src="http://www.gravatar.com/avatar/13a1278641724c45dd69b15077c7b7a1.png?s=140" class="avatar" width="140">
 
-> Performance Engineer @ Netflix. Advisor @ monashees+. Entrepreneur. Adventurer. Maker. Addicted to Travel and Electronic Music.
+> Performance Engineer @ Netflix. Advisor @ monashees+. Entrepreneur. Adventurer. Addicted to Travel and Electronic Music.
 
-It’s short, but pretty self-descriptive. I’m an engineer, more specifically, a performance engineer @ Netflix, the world's leading internet-based television network and largest single source of internet traffic in North America. I try to fill my days trying to make Netflix as fast, efficient and resilient as possible, from your iPhone client to the operating system powering all our backend services.
+Hi folks. I’m Martin. I’m an engineer, more specifically, a performance engineer @ Netflix, the world's leading entertainment service and largest single source of internet traffic in North America. I try to fill my days trying to make Netflix as fast, efficient and resilient as possible, from your iPhone client to the operating system powering all our backend services.
 
-I love travel, not tourism. Getting to know new places, new cultures and new people are the most fulfilling things one can experience in life. I’ll jump into a plane or back of a truck at the smallest opportunity. In 2015 I finished the [Mongol Rally](http://www.theadventurists.com/mongol-rally/), driving over 12.000 miles, across 21 countries, over 2 months, for charity. Finished the [Rickshaw Run](http://www.theadventurists.com/rickshaw-run/) in 2017, driving a [tuk tuk](https://en.wikipedia.org/wiki/Auto_rickshaw) in India, top to bottom. Over 3.000 km, with a max speed of 30 km/h, downhill. Starting a new adventure in 2018, driving old VW Bugs from South Brazil to Peru! Follow this new adventure on our [Facebook Group](https://www.facebook.com/groups/604303013248626/). I'm a big proponent of backpacking, overland and adventure traveling. The best way of getting to know new places is not in a 5-star hotel!
+I've developed multiple open source tools like [Vector](https://github.com/Netflix/vector) and [FlameScope](https://github.com/Netflix/flamescope), created plugins like [d3-flame-graph](https://github.com/spiermar/d3-flame-grap) and [d3-heatmap2](https://github.com/spiermar/d3-heatmap2), and contributed inumerous other projects.
 
-According to TripAdvisor, I visited north of 40 countries, hundreds of places, and that's less than 20% of of the world!
+Internally at Netflix, I've created Icarus, Netflix's real-user performance monitoring solution that runs on every single Netflix device on the planet. Developed Mogul, a bottleneck analysis tool that inspects internal and external dependency demand for services and help us identify bottlenecks and tuning opportunities. Developed Slalom, a high-level demand analysis tool that helps visualize demand flow on large scale systems. Worked on metric trending that helps us identify long-term performance regressions. Developed the in-house cloud performance testing framework, analysis tool and fully automated analysis engine for performance tests. 
 
-Check my [projects page](/projects) to see a few other things I'm working on right now!
+I'm also a Venture Advisor at [monashees+](http://monashees.com.br/en/), one of the largest venture capital firms in Brazil, where I try to understand the tech level of prospective startups and help the invested ones to grow!
 
-Also, follow me on Twitter! [@spiermar](https://twitter.com/spiermar)
+Check my [contact page](/contact) for ways to reach out!
