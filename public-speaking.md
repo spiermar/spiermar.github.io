@@ -5,11 +5,13 @@ title: Public Speaking
 
 <div class="hero-image"></div>
 
-Over the last few years, I've given inumerous presentations, to groups as small as six and as large as 6,000. Most of my talks are technical and related to the work I've been doing at Netflix. I'm also known to seldomly speak on topics related to innovation, technology, leadership, product development, and the Silicon Valley culture. 
+Over the last few years, I've given inumerous presentations, to groups as small as six and as large as 6,000. Most of my talks are technical and related to the work I've been doing at Netflix. I'm also known to seldomly speak on topics related to innovation, technology, leadership, product development, and the Silicon Valley culture.
 
-I tailor each presentation to the audience and strive to create the outcome you want to create.
+Beside public events, I also talk with companies and individual teams, locally in the Bay Area and remotely, about a varied set of subjects.
 
-If you're interested in a speaking engagement, please check the [contact page](/contact) for contact details. Also, please include the event date, location and your expectations in the message.
+I tailor each session to the audience and strive to create the outcome you want to create!
+
+If you're interested in a speaking engagement or meeting, please check the [contact page](/contact) for contact details. Also, please include the event date, location and your expectations in the message.
 
 ## Recent Talks
 
