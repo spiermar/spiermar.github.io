@@ -11,7 +11,7 @@ Follow my adventures on [Instagram](https://www.instagram.com/unchartedcorners)!
 
 ## Llama Run
 
-Earlier in 2018, me and a few frieds decided to drive old VW Bugs from South Brazil to Peru! We lost a car (and a participant) on the way, but we managed to visit Iguazu Falls, cross the Andes, the Atacama desert, drove into Salar de Uyuni in Bolivia, went to Lake Titicaca and Machu Picchu, and arrived in Cusco to complete our month-long adventure. Check the [Facebook Group](https://www.facebook.com/groups/604303013248626/) for more details.
+Earlier in 2018, me and a few frieds decided to drive old VW Bugs from South Brazil to Peru! We lost a car (and a participant) on the way, but we managed to visit Iguazu Falls, cross the Andes, the Atacama desert, drove into Salar de Uyuni in Bolivia, went to Lake Titicaca and Machu Picchu, and arrived in Cusco to complete our month-long adventure. Check the journey on [PolarSteps](https://www.polarsteps.com/MartinSpier/673967-llama-run?s=A03F0547-E0E4-48C0-AE1A-27849DDA3991), or the [Facebook Group](https://www.facebook.com/groups/604303013248626/) for more details.
 
 ## Rickshaw Run
 
