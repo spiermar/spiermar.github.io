@@ -13,6 +13,6 @@ I've developed multiple open source tools like [Vector](https://github.com/Netfl
 
 Internally at Netflix, I've created Icarus, Netflix's real-user performance monitoring solution that runs on every single Netflix device on the planet. Developed Mogul, a bottleneck analysis tool that inspects internal and external dependency demand for services and help us identify bottlenecks and tuning opportunities. Developed Slalom, a high-level demand analysis tool that helps visualize demand flow on large scale systems. Worked on metric trending that helps us identify long-term performance regressions. Developed the in-house cloud performance testing framework, analysis tool and fully automated analysis engine for performance tests. 
 
-I'm also a Venture Advisor at [monashees+](http://monashees.com.br/en/), one of the largest venture capital firms in Brazil, where I try to understand the tech level of prospective startups and help the invested ones to grow!
+I'm also a Venture Advisor at [monashees+](http://monashees.com.br/en/), one of the largest venture capital firms in Brazil, where I try to understand the tech level of prospective startups and help the invested ones to grow! Besides the portfolio startups, I advise multiple companies, of all sizes and shapes, on a varied set of challenges.
 
 Check my [contact page](/contact) for ways to reach out!
