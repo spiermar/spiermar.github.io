@@ -11,7 +11,7 @@ Besides public presentations, I also talk with companies and individual teams, l
 
 I tailor each session to the audience and strive to create the outcome you want to create!
 
-If you're interested in a speaking engagement or meeting, please check the [contact page](/contact) for contact details. Also, please include the event date, location and your expectations in the message.
+If you're interested in a speaking engagement or meeting, use the [contact page](/contact) to get in touch with me, and include the event date, location and your expectations in the message.
 
 ## Recent Talks
 
