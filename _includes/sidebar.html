@@ -1,43 +1,26 @@
-<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
-     styles, `#sidebar-checkbox` for behavior. -->
-<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox" checked>
-
-<!-- Toggleable sidebar -->
-<div class="sidebar" id="sidebar">
-  <div class="sidebar-item avatar">
-    <img alt src="http://www.gravatar.com/avatar/13a1278641724c45dd69b15077c7b7a1.png?s=140" class="avatar" width="140">
-  </div>
-
-  <div class="sidebar-item">
-    <p>{{ site.title }}</p>
-  </div>
-
-  <!-- <div class="sidebar-item">
-    <p>{{ site.about }}</p>
-  </div> -->
-
-  <nav class="sidebar-nav">
-    <!-- <a class="sidebar-nav-item{% if page.title == "Home" %} active{% endif %}" href="/">Home</a> -->
-    <a class="sidebar-nav-item{% if page.title == "About" %} active{% endif %}" href="/">About</a>
-
-    {% comment %}
-      The code below dynamically generates a sidebar nav of pages with
-      `layout: page` in the front-matter. See readme for usage.
-    {% endcomment %}
-
-    {% assign pages_list = site.pages %}
-    {% for node in pages_list %}
-      {% if node.title != null %}
-        {% if node.layout == "page" %}
-          <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
-        {% endif %}
-      {% endif %}
-    {% endfor %}
-    <a class="sidebar-nav-item" href="{{ site.author.url }}" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
-    <a class="sidebar-nav-item" href="{{ site.github.url }}" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-    <a class="sidebar-nav-item" href="{{ site.medium.url }}" target="_blank"><i class="fab fa-medium"></i> Medium</a>
-    <a class="sidebar-nav-item" href="{{ site.linkedin.url }}" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    <a class="sidebar-nav-item" href="{{ site.instagram.url }}" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-  </nav>
-
+<!-- ========== MAIN MENU ========== -->
+<div class="container">
+  <ul id="gn-menu" class="gn-menu-main">
+    <li class="gn-trigger">
+      <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+      <nav class="gn-menu-wrapper">
+        <div class="gn-scroller">
+          <ul class="gn-menu">
+            <li class="gn-search-item">
+              <input placeholder="Search" type="search" class="gn-search">
+              <a class="gn-icon gn-icon-search"><span>Search</span></a>
+            </li>
+            <li><a href="#home" class="gn-icon gn-icon-home smoothscroll">Home</a></li>
+            <li><a href="#about" class="gn-icon gn-icon-archive smoothscroll">About</a></li>
+            <li><a href="#portfolio" class="gn-icon gn-icon-pictures smoothscroll">Portfolio</a></li>
+            <li><a href="#blog" class="gn-icon gn-icon-article smoothscroll">Blog</a></li>
+            <li><a href="#contact" class="gn-icon gn-icon-envelop smoothscroll">Contact</a></li>
+          </ul>
+        </div>
+        <!-- /gn-scroller -->
+      </nav>
+    </li>
+    <li><a href="#home" class="smoothscroll">Martin Spier</a></li>
+  </ul>
 </div>
+<!-- /container -->
