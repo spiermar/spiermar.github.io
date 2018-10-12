@@ -13,7 +13,8 @@
       <h3>Drop Me A Line</h3>
       <br>
 
-      <form class="contact-form php-mail-form" role="form" action="contactform/contactform.php" method="POST">
+      <form class="contact-form" role="form" action="https://formspree.io/hello@martinspier.io" method="POST">
+        <input type="hidden" name="_next" value="http://martinspier.io/contact-thanks/" />
 
         <div class="form-group">
           <label for="contact-name">Your Name</label>
@@ -23,7 +24,7 @@
         </div>
         <div class="form-group">
           <label for="contact-email">Your Email</label>
-          <input type="email" name="email" class="form-control" id="contact-email" placeholder="Your Email" data-rule="email"
+          <input type="email" name="_replyto" class="form-control" id="contact-email" placeholder="Your Email" data-rule="email"
             data-msg="Please enter a valid email">
           <div class="validate"></div>
         </div>
@@ -41,7 +42,6 @@
           <div class="validate"></div>
         </div>
 
-        <div class="loading"><img src="/public/lib/php-mail-form/loading.gif"></div>
         <div class="error-message"></div>
         <div class="sent-message">Your message has been sent. Thank you!</div>
 
@@ -50,6 +50,9 @@
         </div>
 
       </form>
+
+      <br><br>
+      <p>You can also reach out directly on <a href="mailto:hello@martinspier.io">hello@martinspier.io</a></p>
     </div>
 
   </div>
