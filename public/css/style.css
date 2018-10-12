@@ -100,43 +100,54 @@ hr {
 
 #speakingwrap {
   background: url(../img/speakingwrap.jpg) no-repeat center top;
+}
+
+#adventureswrap {
+  background: url(../img/adventureswrap.jpg) no-repeat center top;
+}
+
+#opensourcewrap {
+  background: url(../img/opensourcewrap.jpg) no-repeat center top;
+}
+
+.sectionwrap {
   margin-top: 30px;
   padding-top: 50px;
   text-align: center;
-  background-attachment: relative;
-  background-position: center center;
+  background-attachment: relative !important;
+  background-position: center center !important;
   min-height: 800px;
   width: 100%;
-  -webkit-background-size: 100%;
-  -moz-background-size: 100%;
-  -o-background-size: 100%;
-  background-size: 100%;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover
+  -webkit-background-size: 100% !important;
+  -moz-background-size: 100% !important;
+  -o-background-size: 100% !important;
+  background-size: 100% !important;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-size: cover !important;
 }
 
-#speakingwrap h3 {
+.sectionwrap h3 {
   font-size: 35px;
   color: #fff;
   text-align: center;
 }
 
-#speakingwrap h4 {
+.sectionwrap h4 {
   font-size: 20px;
   font-weight: 500;
   color: #fff;
   text-align: center;
 }
 
-#speakingwrap p {
+.sectionwrap p {
   font-size: 18px;
   font-weight: 300;
   color: #fff;
 }
 
-#speakingwrap li {
+.sectionwrap li {
   font-size: 18px;
   font-weight: 300;
   color: #fff;
