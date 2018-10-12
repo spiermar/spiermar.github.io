@@ -73,6 +73,10 @@ hr {
   color: #fff
 }
 
+.modal-body p {
+  color: #555 !important;
+}
+
 #headerwrap {
   background: url(../img/header-bg.jpg) no-repeat center top;
   margin-top: -10px;
@@ -332,7 +336,7 @@ hr {
 }
 
 .accordion-heading {
-  margin-top: :30px;
+  margin-top: 30px;
   padding-bottom: 10px;
   text-align: left;
   border-bottom: 1px solid #ccc
@@ -382,7 +386,6 @@ hr {
 
 .form-group label {
   font-family: Raleway;
-  sans-serif;
   font-size: 16px;
   font-weight: 300
 }
