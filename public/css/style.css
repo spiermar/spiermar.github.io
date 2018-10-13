@@ -773,10 +773,6 @@ input.gn-search:focus {
 
 /* Contact Form */
 
-.contact-form {
-
-}
-
 .contact-form label {
    color: #999;
 }
@@ -863,4 +859,20 @@ input.gn-search:focus {
 
 .credits {
   color: #999;
+}
+
+#footerwrap .fab {
+  margin-right: 16px;
+}
+
+.menu-icon {
+  display: inline-block;
+  width: 60px;
+  text-align: center;
+  text-transform: none;
+  font-weight: 400;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased
 }
