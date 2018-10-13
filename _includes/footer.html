@@ -13,19 +13,17 @@
       <h3>Drop Me A Line</h3>
       <br>
 
-      <form class="contact-form" role="form" action="https://formspree.io/hello@martinspier.io" method="POST">
-        <input type="hidden" name="_next" value="http://martinspier.io/contact-thanks/" />
-
+      <form class="contact-form" id="contact-form" role="form">
         <div class="form-group">
           <label for="contact-name">Your Name</label>
           <input type="name" name="name" class="form-control" id="contact-name" placeholder="Your Name" data-rule="minlen:4"
-            data-msg="Please enter at least 4 chars">
+            data-msg="Please enter at least 4 chars" required>
           <div class="validate"></div>
         </div>
         <div class="form-group">
           <label for="contact-email">Your Email</label>
-          <input type="email" name="_replyto" class="form-control" id="contact-email" placeholder="Your Email" data-rule="email"
-            data-msg="Please enter a valid email">
+          <input type="email" name="email" class="form-control" id="contact-email" placeholder="Your Email" data-rule="email"
+            data-msg="Please enter a valid email" required>
           <div class="validate"></div>
         </div>
         <div class="form-group">
@@ -38,12 +36,12 @@
         <div class="form-group">
           <label for="contact-message">Your Message</label>
           <textarea class="form-control" name="message" id="contact-message" placeholder="Your Message" rows="5"
-            data-rule="required" data-msg="Please write something for us"></textarea>
+            data-rule="required" data-msg="Please write something for us" required></textarea>
           <div class="validate"></div>
         </div>
 
-        <div class="error-message"></div>
-        <div class="sent-message">Your message has been sent. Thank you!</div>
+        <div class="error-message" id="error-message" style="display:none;"></div>
+        <div class="sent-message" id="sent-message" style="display:none;">Your message has been sent!</div>
 
         <div class="form-send">
           <button type="submit" class="btn btn-large">Send Message</button>
@@ -84,5 +82,14 @@
 <script src="/public/lib/classie/classie.js"></script>
 <script src="/public/lib/gnmenu/gnmenu.js"></script>
 
-<!-- Template Main Javascript File -->
+<!-- Javascript Files -->
 <script src="/public/js/main.js"></script>
+<script src="/public/js/message.js"></script>
+<script>
+  jQuery(document).ready(function() {
+    initMenu();
+    initScroll();
+    initMessageForm();
+  });
+</script>
+<script src="/public/js/ga.js"></script>
