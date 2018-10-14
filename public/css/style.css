@@ -876,3 +876,7 @@ input.gn-search:focus {
   line-height: 1;
   -webkit-font-smoothing: antialiased
 }
+
+#spinner-message {
+  margin-right: 5px;
+}

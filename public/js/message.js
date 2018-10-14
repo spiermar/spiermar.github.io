@@ -5,6 +5,7 @@ function initMessageForm() {
   const FORM_ELEMENT = document.getElementById('contact-form');
   const SUCCESS_ELEMENT = document.getElementById('sent-message');
   const ERROR_ELEMENT = document.getElementById('error-message');
+  const SPINNER_ELEMENT = document.getElementById('spinner-message');
 
   const formDataToJson = (formData) => {
     const entries = formData.entries();
@@ -32,6 +33,8 @@ function initMessageForm() {
   FORM_ELEMENT.addEventListener('submit', function (event) {
     event.preventDefault();
 
+    SPINNER_ELEMENT.style.display = 'inline';
+
     const formData = new FormData(this);
 
     fetch(FORMSPREE_POST_URL, {
@@ -50,10 +53,12 @@ function initMessageForm() {
       .then((res) => {
         if (res.success === 'email sent') {
           toggleSuccess(true);
+          SPINNER_ELEMENT.style.display = 'none';
           FORM_ELEMENT.reset();
         } else {
           ERROR_ELEMENT.innerHTML = 'Something went wrong. Please try again later.'
           ERROR_ELEMENT.style.display = 'block';
+          SPINNER_ELEMENT.style.display = 'none';
           console.log('Oops. Something went wrong.')
         }
       });
