@@ -37,6 +37,10 @@ function initMessageForm() {
 
     const formData = new FormData(this);
 
+    const formSubmitButton = document.getElementById("contact-submit-button");
+
+    formSubmitButton.disabled = true;
+
     fetch(FORMSPREE_POST_URL, {
         method: 'POST',
         body: formDataToJson(formData),
@@ -44,13 +48,9 @@ function initMessageForm() {
           'Content-Type': 'application/json'
         }
       })
-      .catch((err) => {
-        ERROR_ELEMENT.innerHTML = 'Something went wrong. Please try again later.'
-        ERROR_ELEMENT.style.display = 'block';
-        console.log(err);
-      })
       .then((res) => res.json())
       .then((res) => {
+        formSubmitButton.disabled = false;
         if (res.success === 'email sent') {
           toggleSuccess(true);
           SPINNER_ELEMENT.style.display = 'none';
@@ -61,6 +61,12 @@ function initMessageForm() {
           SPINNER_ELEMENT.style.display = 'none';
           console.log('Oops. Something went wrong.')
         }
+      })
+      .catch((err) => {
+        formSubmitButton.disabled = false;
+        ERROR_ELEMENT.innerHTML = 'Something went wrong. Please try again later.'
+        ERROR_ELEMENT.style.display = 'block';
+        console.log(err);
       });
   });
 }
