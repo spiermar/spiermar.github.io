@@ -59,14 +59,15 @@ function initMessageForm() {
           ERROR_ELEMENT.innerHTML = 'Something went wrong. Please try again later.'
           ERROR_ELEMENT.style.display = 'block';
           SPINNER_ELEMENT.style.display = 'none';
-          console.log('Oops. Something went wrong.')
+          console.error('Oops. Something went wrong.')
+          console.error(res)
         }
       })
       .catch((err) => {
         formSubmitButton.disabled = false;
         ERROR_ELEMENT.innerHTML = 'Something went wrong. Please try again later.'
         ERROR_ELEMENT.style.display = 'block';
-        console.log(err);
+        console.error(err);
       });
   });
 }
