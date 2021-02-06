@@ -1,6 +1,6 @@
 function initMessageForm() {
-  const FORMSPREE_FORM = 'qzlbjoar';
-  const FORMSPREE_POST_URL = `https://formspree-martinspierio.herokuapp.com/${FORMSPREE_FORM}`;
+  const FORMSPREE_FORM = 'meqpdppq';
+  const FORMSPREE_POST_URL = `https://formspree.io/f/${FORMSPREE_FORM}`;
 
   const FORM_ELEMENT = document.getElementById('contact-form');
   const SUCCESS_ELEMENT = document.getElementById('sent-message');
