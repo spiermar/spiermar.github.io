@@ -51,7 +51,7 @@ function initMessageForm() {
       .then((res) => res.json())
       .then((res) => {
         formSubmitButton.disabled = false;
-        if (res.success === 'email sent') {
+        if (res.ok) {
           toggleSuccess(true);
           SPINNER_ELEMENT.style.display = 'none';
           FORM_ELEMENT.reset();
