@@ -44,11 +44,11 @@ View page source (Ctrl+U / Cmd+U):
 **Tools:**
 - [Meta Tags Checker](https://metatags.io/)
 - [Facebook Debugger](https://developers.facebook.com/tools/debug/)
-- [Twitter Card Validator](https://cards-dev.twitter.com/validator)
+- [X Card Validator](https://cards-dev.x.com/validator)
 
 ### 2. Test Social Sharing
 
-Share URL on LinkedIn, Twitter, Slack. Check preview image and description.
+Share URL on LinkedIn, X, Slack. Check preview image and description.
 
 If incorrect:
 1. Verify `SITE_URL` is set correctly

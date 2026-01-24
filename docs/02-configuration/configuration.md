@@ -52,7 +52,7 @@ SITE_AUTHOR_LOCATION="San Francisco, CA"
 
 SOCIAL_GITHUB=https://github.com/johndoe
 SOCIAL_LINKEDIN=https://linkedin.com/in/johndoe
-SOCIAL_TWITTER=https://twitter.com/johndoe
+SOCIAL_TWITTER=https://x.com/johndoe
 ```
 
 ## Navigation
