@@ -224,34 +224,6 @@ const writingCollection = defineCollection({
 });
 
 /**
- * Uses Collection
- * 
- * Documentation of tools, technologies, and environment used in development workflow.
- * 
- * Features:
- * - Three categories (tools, stack, environment)
- * - Items with name, description, and optional URL
- * - Custom order for intentional presentation
- */
-const usesCollection = defineCollection({
-  loader: glob({ pattern: '**/*.mdx', base: './src/content/uses' }),
-  schema: z.object({
-    /** Category for grouping */
-    category: z.enum(['tools', 'stack', 'environment']),
-    
-    /** List of items in this category */
-    items: z.array(z.object({
-      name: z.string(),
-      description: z.string(),
-      url: z.string().url().optional(),
-    })),
-    
-    /** Sort order within category */
-    order: z.number(),
-  }),
-});
-
-/**
  * Speaking/Talks Collection
  * 
  * Conference talks, meetup presentations, podcast appearances, and workshops.
@@ -356,7 +328,6 @@ export const collections = {
   decisions: decisionsCollection,
   journey: journeyCollection,
   writing: writingCollection,
-  uses: usesCollection,
   speaking: speakingCollection,
   testimonials: testimonialsCollection,
 };
