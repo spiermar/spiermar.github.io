@@ -33,6 +33,13 @@ This is a personal web page. The main goal is to publish blog posts, project det
 - Implement proper SEO using `<head>` components and `@astrojs/sitemap`.
 - Use `src/layouts/` for page wrappers.
 
+### Git Branching Rules
+- Use semantic naming: `type/description` (e.g., `feature/login-page`, `fix/header-bug`)
+- Types: `feat/`, `fix/`, `chore/`, `docs/`, `refactor/`
+- Include ticket numbers when applicable: `feat/JIRA-123-description`
+- Use lowercase and hyphens for separators
+- Always create a new branch for new tasks using `/branch`
+
 ### Version Control
 - Use Conventional Commits specification for git commit messages
 - Use semantic versioning (SemVer)
