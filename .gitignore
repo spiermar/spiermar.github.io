@@ -62,3 +62,6 @@ coverage/
 .settings/
 *.sublime-project
 *.sublime-workspace
+
+# Claude Code local settings
+.claude/settings.local.json

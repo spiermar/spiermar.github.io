@@ -21,7 +21,13 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "check": "astro check",
+    "lint": "astro check"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.0",
@@ -31,6 +37,10 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.0",
-    "typescript": "^5.6.0"
+    "@vitest/coverage-v8": "^4.0.18",
+    "@vitest/ui": "^4.0.18",
+    "happy-dom": "^20.3.7",
+    "typescript": "^5.6.0",
+    "vitest": "^4.0.18"
   }
 }
