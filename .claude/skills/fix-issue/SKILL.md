@@ -12,12 +12,13 @@ Analyze and fix the GitHub issue: $ARGUMENTS.
 5. Create implementation plan with the necessary changes to fix the issue
 6. Document the plan and tasks to be executed in the TODO.md file
 7. Execute the plan, marking the completed tasks in the TODO.md file
-8. Write and run tests to verify the fix
-9. Ensure code passes linting and type checking
-10. Create a descriptive commit message
-11. Commit the changes to the new branch, but do not include the TODO.md file
-12. Push the new branch and create a PR, including the plan documented in the TODO.md file
-13. Delete the TODO.md file after creating the PR
-14. Checkout main git branch again
+8. Write tests for any fixes or new features added, particularly integration tests
+9. Run tests to verify the fix and/or features
+10. Ensure code passes linting and type checking
+11. Create a descriptive commit message
+12. Commit the changes to the new branch, but do not include the TODO.md file
+13. Push the new branch and create a PR, including the plan documented in the TODO.md file
+14. Delete the TODO.md file after creating the PR
+15. Checkout main git branch again
 
 Remember to use the GitHub CLI (`gh`) for all GitHub-related tasks.
