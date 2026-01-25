@@ -1,0 +1,159 @@
+---
+/**
+ * Adventures Page
+ *
+ * Lists all adventures including hikes, climbs, and travel experiences.
+ * Organizes adventures by year in reverse chronological order, with each year
+ * displaying its adventures sorted by date (most recent first).
+ *
+ * Features:
+ * - Queries all adventure entries from content collection
+ * - Sorts by date (descending - most recent first)
+ * - Groups adventures by year for easy navigation
+ * - Displays statistics (total adventures, planned count)
+ * - Status badges for planned adventures
+ * - Cover images with location metadata
+ * - Empty state handling
+ *
+ * Route: /adventures
+ *
+ * @page
+ */
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+import AdventureCard from '../components/AdventureCard.astro';
+import PageStats from '../components/PageStats.astro';
+import { getCollection } from 'astro:content';
+import { pagesConfig } from '../pages.config';
+
+/**
+ * Queries all adventure entries from the content collection
+ */
+const allAdventures = await getCollection('adventures');
+
+/**
+ * Sorts adventures by date in descending order (most recent first)
+ *
+ * Ensures the latest adventures appear at the top of each year section.
+ */
+const sortedAdventures = allAdventures.sort((a, b) => {
+  return b.data.date.getTime() - a.data.date.getTime();
+});
+
+/**
+ * Groups adventures by year for organized display
+ *
+ * Creates a record object where keys are years and values are arrays of adventures
+ * from that year. This enables year-based section headers in the UI.
+ *
+ * @returns Record with year as key and array of adventures as value
+ */
+const adventuresByYear = sortedAdventures.reduce((acc, adventure) => {
+  const year = adventure.data.date.getFullYear();
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(adventure);
+  return acc;
+}, {} as Record<number, typeof sortedAdventures>);
+
+/**
+ * Extracts and sorts years in descending order
+ *
+ * Ensures year sections are displayed from most recent to oldest.
+ */
+const years = Object.keys(adventuresByYear)
+  .map(Number)
+  .sort((a, b) => b - a);
+
+/**
+ * Total count of all adventures for statistics display
+ */
+const totalAdventures = sortedAdventures.length;
+
+/**
+ * Count of planned adventures specifically for statistics display
+ *
+ * Highlights upcoming adventures as a key metric.
+ */
+const plannedCount = sortedAdventures.filter(a => a.data.status === 'planned').length;
+---
+
+<BaseLayout>
+  <SEO
+    slot="head"
+    title={pagesConfig.adventures.title}
+    description={pagesConfig.adventures.description}
+    type="website"
+  />
+
+  <main class="page-container">
+    <header class="page-header">
+      <h1 class="page-title">{pagesConfig.adventures.heading}</h1>
+      <p class="page-intro">
+        {pagesConfig.adventures.intro}
+      </p>
+      <PageStats text={`${totalAdventures} adventures · ${plannedCount} planned`} />
+    </header>
+
+    {years.length > 0 ? (
+      <div class="adventures-by-year">
+        {years.map((year) => (
+          <section class="year-section">
+            <h2 class="year-heading">{year}</h2>
+            <div class="adventures-list">
+              {adventuresByYear[year].map((adventure) => (
+                <AdventureCard
+                  title={adventure.data.title}
+                  date={adventure.data.date}
+                  location={adventure.data.location}
+                  status={adventure.data.status}
+                  coverImage={adventure.data.coverImage}
+                  slug={adventure.id}
+                />
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    ) : (
+      <p class="empty-state">No adventures yet.</p>
+    )}
+  </main>
+
+  <style>
+    .adventures-by-year {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .year-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .year-heading {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--color-text);
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--color-border);
+      margin: 0;
+    }
+
+    .adventures-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .year-heading {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</BaseLayout>
