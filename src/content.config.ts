@@ -277,6 +277,51 @@ const speakingCollection = defineCollection({
 });
 
 /**
+ * Adventures Collection
+ *
+ * Travel and outdoor adventures including hiking, climbing, and trips.
+ * Photos are stored externally (Imgur, Google Photos, etc.).
+ *
+ * Features:
+ * - External photo storage via URLs
+ * - Optional gallery links or individual images
+ * - Status inferred from date if not specified
+ * - Category for future filtering
+ * - Featured flag for highlighting
+ */
+const adventuresCollection = defineCollection({
+  loader: glob({ pattern: '**/*.mdx', base: './src/content/adventures' }),
+  schema: z.object({
+    /** Adventure title */
+    title: z.string(),
+
+    /** Location (e.g., "California, USA") */
+    location: z.string(),
+
+    /** Date of adventure */
+    date: z.coerce.date(),
+
+    /** External URL to cover image */
+    coverImage: z.string().url(),
+
+    /** Status (optional, inferred from date if not provided) */
+    status: z.enum(['completed', 'planned']).optional(),
+
+    /** External gallery URL (optional) */
+    gallery: z.string().url().optional(),
+
+    /** Individual image URLs (optional) */
+    images: z.array(z.string().url()).optional(),
+
+    /** Category (optional) */
+    category: z.enum(['hiking', 'climbing', 'backpacking', 'travel']).optional(),
+
+    /** Whether to feature this adventure */
+    featured: z.boolean().default(false),
+  }),
+});
+
+/**
  * Testimonials Collection
  * 
  * Endorsements and recommendations from colleagues and clients.
@@ -329,5 +374,6 @@ export const collections = {
   journey: journeyCollection,
   writing: writingCollection,
   speaking: speakingCollection,
+  adventures: adventuresCollection,
   testimonials: testimonialsCollection,
 };
