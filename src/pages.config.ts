@@ -107,7 +107,17 @@ export const pagesConfig = {
     heading: 'Speaking',
     intro: 'I regularly speak at conferences, meetups, and on podcasts about software architecture, engineering practices, and technical leadership. Here\'s a collection of my talks and presentations.',
   },
-  
+
+  /**
+   * Adventures page (/adventures)
+   */
+  adventures: {
+    title: 'Adventures - Travel & Exploration',
+    description: 'A collection of hiking, climbing, and travel adventures from around the world.',
+    heading: 'Adventures',
+    intro: 'A personal collection of outdoor adventures and travels.',
+  },
+
   /**
    * Contact page (/contact)
    */
