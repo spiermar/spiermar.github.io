@@ -7,7 +7,7 @@ Analyze and fix the GitHub issue: $ARGUMENTS.
 
 1. Use `gh issue view` to get the issue details
 2. Understand the problem described in the issue
-3. Create a new git branch for the issue fix, respecting git branching rules
+3. Create a new git branch for the issue, respecting git branching rules.
 4. Search the codebase for relevant files
 5. Create implementation plan with the necessary changes to fix the issue
 6. Document the plan and tasks to be executed in the TODO.md file
@@ -18,5 +18,6 @@ Analyze and fix the GitHub issue: $ARGUMENTS.
 11. Commit the changes to the new branch, but do not include the TODO.md file
 12. Push the new branch and create a PR, including the plan documented in the TODO.md file
 13. Delete the TODO.md file after creating the PR
+14. Checkout main git branch again
 
 Remember to use the GitHub CLI (`gh`) for all GitHub-related tasks.
