@@ -68,3 +68,6 @@ coverage/
 
 # git worktrees
 .worktrees/
+
+# CodeNomad
+.codenomad/
