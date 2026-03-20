@@ -4,25 +4,22 @@
  * 
  * Case-study-first portfolio homepage that immediately showcases real impact and outcomes
  * rather than generic taglines. Features a hero section with featured project snapshots,
- * recent decisions, testimonials, and clear calls-to-action.
+ * testimonials, and clear calls-to-action.
  * 
  * Design Philosophy:
  * - Lead with tangible results and case studies
- * - Document decision-making process transparently
  * - Demonstrate value through real project outcomes
- * - Provide multiple entry points (projects, decisions, journey)
+ * - Provide multiple entry points (projects, journey)
  * 
  * Sections:
  * 1. Hero - Value statement with featured case study snapshots
  * 2. Introduction - Brief personal introduction with journey link
- * 3. Recent Decisions - Latest architectural/technical decisions
- * 4. Testimonials - Social proof from colleagues and clients
- * 5. Thinking - Problems and topics of interest
- * 6. CTA - Call-to-action for work opportunities
+ * 3. Testimonials - Social proof from colleagues and clients
+ * 4. Thinking - Problems and topics of interest
+ * 5. CTA - Call-to-action for work opportunities
  * 
  * Features:
  * - Featured projects showcase (top 2-3)
- * - Recent decisions preview (top 2)
  * - Testimonials integration
  * - Structured data for SEO (WebSite and Person)
  * - Responsive grid layout
@@ -60,17 +57,6 @@ const featuredProjects = allProjects
  * providing immediate evidence of impact and outcomes.
  */
 const caseSnapshots = featuredProjects.slice(0, 3);
-
-/**
- * Queries recent decisions for preview section
- * 
- * Retrieves all decisions, sorts by date (newest first), and limits to
- * top 2 for the homepage preview.
- */
-const allDecisions = await getCollection('decisions');
-const recentDecisions = allDecisions
-  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
-  .slice(0, 2);
 ---
 
 <BaseLayout>
@@ -132,32 +118,6 @@ const recentDecisions = allDecisions
         I approach complex problems by understanding constraints, evaluating trade-offs, and delivering solutions that last.
       </p>
       <ForwardLink href="/journey" text="Read my journey" variant="muted" />
-    </section>
-
-    <!-- Recent Decisions -->
-    <section class="recent-decisions">
-      <div class="section-header">
-        <h2>Recent Decisions</h2>
-        <ForwardLink href="/decisions" text="View all" variant="muted" />
-      </div>
-      
-      {recentDecisions.length > 0 ? (
-        <div class="decisions-list">
-          {recentDecisions.map((decision) => {
-            const date = new Date(decision.data.date);
-            const formattedDate = date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-            return (
-              <article class="decision-item">
-                <span class="decision-date">{formattedDate}</span>
-                <h3 class="decision-title">{decision.data.title}</h3>
-                <p class="decision-context">{decision.data.context}</p>
-              </article>
-            );
-          })}
-        </div>
-      ) : (
-        <p class="no-decisions">No decisions documented yet.</p>
-      )}
     </section>
 
     <!-- Testimonials -->
@@ -340,69 +300,6 @@ const recentDecisions = allDecisions
       color: var(--color-text);
     }
 
-    .recent-decisions {
-      margin-bottom: 5rem;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      margin-bottom: 2rem;
-    }
-
-    .section-header h2 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
-
-    .decisions-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      border-top: 1px solid var(--color-border);
-    }
-
-    .decision-item {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .decision-item:last-child {
-      border-bottom: none;
-    }
-
-    .decision-date {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--color-text-muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .decision-title {
-      font-size: 1.125rem;
-      font-weight: 600;
-      line-height: 1.3;
-      color: var(--color-text);
-      margin-bottom: 0.5rem;
-    }
-
-    .decision-context {
-      font-size: 0.9375rem;
-      line-height: 1.6;
-      color: var(--color-text-secondary);
-    }
-
-    .no-decisions {
-      color: var(--color-text-muted);
-      font-style: italic;
-      padding: 1.5rem 0;
-    }
-
     .thinking {
       margin-bottom: 5rem;
     }
@@ -483,16 +380,6 @@ const recentDecisions = allDecisions
       }
 
       .introduction {
-        font-size: 1rem;
-      }
-
-      .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-      }
-
-      .decision-title {
         font-size: 1rem;
       }
 
