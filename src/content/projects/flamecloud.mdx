@@ -1,0 +1,48 @@
+---
+title: "FlameCloud"
+role: "Performance Architect"
+year: 2017
+outcomeSummary: "Built a continuous profiling solution collecting thousands of profiles and millions of stacks daily at Netflix"
+overview: "Cloud-based continuous profiling platform that collects, stores, and analyzes CPU, memory, and heapdump profiles from production systems"
+problem: "Production performance issues are difficult to reproduce in dev environments; engineers need visibility into production behavior at scale"
+constraints:
+  - "Must handle thousands of concurrent profile uploads"
+  - "Must store and index millions of stack traces"
+  - "Must integrate with Netflix cloud infrastructure"
+approach: "Built a cloud-native platform with distributed profile collection, centralized storage with indexing, and integration with existing Netflix tools"
+keyDecisions:
+  - decision: "Build in-house rather than use commercial solutions"
+    reasoning: "Commercial continuous profilers were expensive at Netflix scale and lacked integration with existing tooling"
+  - decision: "Use time-series storage for profiles"
+    reasoning: "Time-series indexing enables efficient querying of profiles by time range for trend analysis"
+techStack:
+  - "Java"
+  - "Python"
+  - "AWS"
+  - "Cassandra"
+impact:
+  metrics:
+    - label: "Daily Profiles"
+      value: "Thousands of profiles"
+    - label: "Daily Stacks"
+      value: "Millions of stacks"
+  qualitative: "Enabled proactive performance optimization and rapid debugging of production issues at Netflix scale"
+learnings:
+  - "Continuous profiling reveals issues before they become incidents"
+  - "Time-series indexing is essential for trend analysis"
+  - "Integration with existing tools drives adoption"
+featured: false
+status: completed
+order: 102
+relatedProjects:
+  - "flamescope"
+  - "d3-flame-graph"
+---
+
+## Architecture
+
+FlameCloud consists of:
+- Profile agents deployed on all production instances
+- Centralized storage with time-series indexing
+- Integration with Netflix observability stack
+- Web UI for profile analysis

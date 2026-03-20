@@ -1,0 +1,51 @@
+---
+title: "Vector"
+role: "Performance Architect"
+year: 2015
+outcomeSummary: "Open-sourced an on-host performance monitoring framework used by engineers to diagnose production issues in real-time"
+overview: "On-host performance monitoring framework exposing high-resolution system metrics through a web interface, enabling engineers to diagnose issues on any instance in real-time"
+problem: "Engineers needed to diagnose production issues on specific instances, but SSH access was restricted and existing tools didn't provide sufficient granularity"
+constraints:
+  - "Must work on every Netflix instance without special access"
+  - "Must provide high-resolution metrics (sub-second)"
+  - "Must be accessible through a web browser"
+approach: "Built a lightweight agent deployed on all instances that exposes metrics through a web UI, integrated with Netflix's service discovery"
+keyDecisions:
+  - decision: "Open source the project"
+    reasoning: "The broader community could benefit, and open sourcing would drive contributions and adoption"
+    alternatives:
+      - "Keep internal as Netflix-only tool"
+  - decision: "Use high-resolution metrics (1-second intervals)"
+    reasoning: "Production issues often manifest in sub-second patterns invisible to minute-level aggregation"
+techStack:
+  - "JavaScript"
+  - "D3.js"
+  - "Python"
+  - "AWS"
+impact:
+  metrics:
+    - label: "GitHub Stars"
+      value: "3573 stars"
+    - label: "Deployment"
+      value: "All Netflix production instances"
+  qualitative: "Featured in Netflix Tech Blog, adopted by multiple companies for production debugging"
+learnings:
+  - "High-resolution metrics reveal issues invisible to aggregated data"
+  - "Web-based access removes barriers to debugging"
+  - "Integration with service discovery is essential at scale"
+featured: true
+status: completed
+order: 3
+relatedProjects:
+  - "icarus"
+  - "kvasir"
+---
+
+## Features
+
+Vector provides:
+- Real-time CPU, memory, disk, and network metrics
+- Per-process breakdown
+- Java JVM metrics integration
+- Customizable dashboards
+- Historical data viewing

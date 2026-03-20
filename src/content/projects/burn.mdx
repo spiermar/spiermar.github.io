@@ -1,0 +1,39 @@
+---
+title: "Burn"
+role: "Performance Architect"
+year: 2017
+outcomeSummary: "Created a CLI tool to convert performance profiles to hierarchical data for flame graph visualization"
+overview: "CLI tool that converts various profiling formats (perf, DTrace, etc.) into hierarchical JSON data compatible with d3-flame-graph"
+problem: "Performance profiles come in many formats (perf, DTrace, stackcollapse), but flame graph visualizations require hierarchical JSON data"
+constraints:
+  - "Must support multiple input formats"
+  - "Must produce consistent output format"
+  - "Must be easy to integrate into pipelines"
+approach: "Built a Go CLI tool with pluggable parsers for different profiling formats, outputting a standardized hierarchical JSON format"
+keyDecisions:
+  - decision: "Use Go for CLI"
+    reasoning: "Go is widely available, has good streaming support for large files, and produces single-binary distributions"
+techStack:
+  - "Go"
+impact:
+  metrics:
+    - label: "GitHub Stars"
+      value: "92 stars"
+  qualitative: "Enables engineers to convert profiling data from any source into flame graph visualizations"
+learnings:
+  - "CLI tools should support streaming for large files"
+  - "Pluggable architecture allows community contributions"
+featured: false
+status: completed
+order: 100
+relatedProjects:
+  - "d3-flame-graph"
+---
+
+## Supported Formats
+
+Burn supports converting from:
+- Linux perf
+- DTrace
+- Stackcollapse format
+- Custom JSON profiles

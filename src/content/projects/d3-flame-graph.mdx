@@ -1,0 +1,54 @@
+---
+title: "d3-flame-graph"
+role: "Performance Architect"
+year: 2015
+outcomeSummary: "Created an open-source D3.js plugin for flame graph visualization, now used by Apache Flink, Google pprof, and Oracle Java Flight Recorder"
+overview: "A D3.js plugin that produces flame graphs from hierarchical data, enabling engineers to visualize CPU profiling data in web applications"
+problem: "Performance engineers needed a way to visualize hierarchical profiling data as flame graphs in web-based tools, but existing solutions were either desktop-only or lacked customization options"
+constraints:
+  - "Must work with any hierarchical data format"
+  - "Must be compatible with D3.js ecosystem"
+  - "Must support interactive features like zooming and search"
+approach: "Built a reusable D3.js plugin that accepts hierarchical data and renders interactive flame graphs with zoom, search, and tooltip support"
+keyDecisions:
+  - decision: "Use D3.js as the visualization framework"
+    reasoning: "D3.js is the industry standard for data visualization, has excellent community support, and allows maximum customization"
+    alternatives:
+      - "Canvas-based rendering"
+      - "WebGL for performance"
+  - decision: "Accept hierarchical JSON data format"
+    reasoning: "Hierarchical data is a natural fit for flame graphs and can be generated from any profiling format with a converter"
+techStack:
+  - "JavaScript"
+  - "D3.js"
+  - "HTML"
+  - "CSS"
+impact:
+  metrics:
+    - label: "GitHub Stars"
+      value: "964 stars"
+    - label: "Industry Adoption"
+      value: "Apache Flink, Google pprof, Oracle JFR"
+  qualitative: "Became the de facto standard for flame graph visualization on the web, integrated into major profiling tools"
+learnings:
+  - "Reusable plugins should accept flexible data formats"
+  - "Interactive features like search are essential for large flame graphs"
+  - "Good documentation drives adoption"
+featured: true
+status: completed
+order: 2
+relatedProjects:
+  - "burn"
+  - "flamescope"
+  - "d3-heatmap2"
+  - "flame-graphs-on-pprof"
+---
+
+## Usage
+
+The plugin accepts hierarchical data and renders interactive flame graphs with support for:
+
+- Zooming and panning
+- Search highlighting
+- Customizable colors
+- Tooltip customization

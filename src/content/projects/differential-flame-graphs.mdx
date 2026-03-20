@@ -1,0 +1,40 @@
+---
+title: "Differential Flame Graphs"
+role: "Performance Architect"
+year: 2017
+outcomeSummary: "Developed differential flame graphs for comparing performance between software versions"
+overview: "Visualization technique for comparing two flame graphs side-by-side, highlighting differences in CPU time allocation between versions"
+problem: "Engineers need to understand how performance changes between software versions, but comparing two separate flame graphs is tedious and error-prone"
+constraints:
+  - "Must clearly show both improvements and regressions"
+  - "Must handle profiles with different total durations"
+  - "Must be intuitive for engineers to interpret"
+approach: "Built differential visualization that subtracts corresponding frames and uses color to indicate increases (red) or decreases (green)"
+keyDecisions:
+  - decision: "Use color coding for difference indication"
+    reasoning: "Red for increases, green for decreases matches common intuition and makes regressions immediately visible"
+  - decision: "Normalize by total samples"
+    reasoning: "Different profile durations require normalization for fair comparison"
+techStack:
+  - "JavaScript"
+  - "D3.js"
+impact:
+  qualitative: "Enabled rapid identification of performance regressions between versions"
+learnings:
+  - "Differential views are more actionable than side-by-side comparison"
+  - "Normalization is essential for fair comparison"
+  - "Color coding must match user intuition"
+featured: false
+status: completed
+order: 103
+relatedProjects:
+  - "d3-flame-graph"
+  - "flamescope"
+---
+
+## How to Use
+
+1. Capture profiles before and after a change
+2. Load both profiles into the differential tool
+3. Frames show relative change: red = more time, green = less time
+4. Quickly identify regressions and verify optimizations

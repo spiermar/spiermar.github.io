@@ -1,0 +1,40 @@
+---
+title: "d3-heatmap2"
+role: "Performance Architect"
+year: 2018
+outcomeSummary: "Created a D3.js plugin for heatmap visualization, complementing the flame graph plugin for performance analysis"
+overview: "A D3.js plugin that produces heatmaps from matrix data, useful for visualizing time-series performance data and correlation matrices"
+problem: "Performance analysis often requires visualizing data across two dimensions (e.g., time vs. metric), which flame graphs cannot represent"
+constraints:
+  - "Must integrate with D3.js ecosystem"
+  - "Must support large datasets"
+  - "Must allow customization of axes and colors"
+approach: "Built a reusable D3.js plugin with optimized rendering for large matrices and customizable color scales"
+keyDecisions:
+  - decision: "Use canvas rendering for large datasets"
+    reasoning: "Canvas performs better than SVG for thousands of cells, avoiding DOM overhead"
+techStack:
+  - "JavaScript"
+  - "D3.js"
+  - "HTML Canvas"
+impact:
+  metrics:
+    - label: "GitHub Stars"
+      value: "73 stars"
+  qualitative: "Enables visualization of time-series performance data and correlation analysis in web tools"
+learnings:
+  - "Canvas is essential for large matrix visualization"
+  - "Color scales should be perceptually uniform"
+featured: false
+status: completed
+order: 101
+relatedProjects:
+  - "d3-flame-graph"
+---
+
+## Features
+
+- Canvas rendering for performance
+- Customizable color scales
+- Interactive zoom and pan
+- Tooltip support

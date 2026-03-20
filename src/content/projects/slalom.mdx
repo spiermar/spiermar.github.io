@@ -1,0 +1,40 @@
+---
+title: "Slalom"
+role: "Performance Architect"
+year: 2018
+outcomeSummary: "Built a bottleneck analysis tool for visualizing data flows and dependencies in large-scale systems"
+overview: "Bottleneck analysis tool for visualizing request flows through distributed systems and identifying performance limiting factors"
+problem: "Identifying which service or component is the bottleneck in a distributed request flow required manual analysis of traces and metrics"
+constraints:
+  - "Must work with distributed trace data"
+  - "Must identify bottlenecks automatically"
+  - "Must handle complex request patterns"
+approach: "Built a tool that analyzes distributed traces, calculates critical paths, and visualizes bottlenecks in request flows"
+keyDecisions:
+  - decision: "Use critical path analysis"
+    reasoning: "The critical path determines overall latency; focusing on it identifies the most impactful optimizations"
+techStack:
+  - "Java"
+  - "Python"
+  - "D3.js"
+impact:
+  qualitative: "Reduced time to identify performance bottlenecks from hours to minutes"
+learnings:
+  - "Critical path analysis focuses optimization efforts"
+  - "Visualization of request flows aids debugging"
+featured: false
+status: completed
+order: 108
+relatedProjects:
+  - "mogul"
+  - "vector"
+---
+
+## Features
+
+Slalom provides:
+- Request flow visualization
+- Critical path analysis
+- Automatic bottleneck identification
+- Latency breakdown by component
+- Optimization recommendations

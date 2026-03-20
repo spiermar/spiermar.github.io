@@ -1,0 +1,44 @@
+---
+title: "End-to-End Tracing"
+role: "Performance Architect"
+year: 2018
+outcomeSummary: "Built a framework linking user device tracing with backend service tracing for complete request visibility"
+overview: "Distributed tracing framework connecting client-side tracing with backend Zipkin-based service tracing, enabling end-to-end request debugging"
+problem: "Tracing was fragmented between client and backend; engineers couldn't follow a request from user action through all backend services"
+constraints:
+  - "Must integrate with existing Zipkin infrastructure"
+  - "Must work across mobile, web, and TV platforms"
+  - "Must maintain low overhead on client devices"
+approach: "Built a trace correlation layer that propagates trace context from device through all backend services, storing traces in a unified format"
+keyDecisions:
+  - decision: "Extend Zipkin rather than build custom tracing"
+    reasoning: "Zipkin was already deployed; extending it minimized migration cost and leveraged existing expertise"
+  - decision: "Use probabilistic sampling on clients"
+    reasoning: "Tracing all requests would overwhelm storage; sampling keeps costs manageable while maintaining statistical significance"
+techStack:
+  - "Java"
+  - "Zipkin"
+  - "Cassandra"
+  - "AWS"
+impact:
+  qualitative: "Enabled debugging of cross-system issues that were previously impossible to trace"
+learnings:
+  - "End-to-end visibility requires client participation"
+  - "Probabilistic sampling is essential for cost control"
+  - "Trace context propagation must be standardized"
+featured: false
+status: completed
+order: 106
+relatedProjects:
+  - "icarus"
+  - "vector"
+---
+
+## Architecture
+
+End-to-End Tracing consists of:
+1. Client SDKs (iOS, Android, Web, TV)
+2. Trace context propagation middleware
+3. Backend service instrumentation
+4. Unified trace storage (Zipkin + extensions)
+5. Correlation UI linking device and backend traces

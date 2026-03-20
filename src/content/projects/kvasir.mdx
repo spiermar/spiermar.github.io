@@ -1,0 +1,43 @@
+---
+title: "Kvasir"
+role: "Performance Architect"
+year: 2019
+outcomeSummary: "Built an automated performance testing framework with fully automated regression analysis for Netflix"
+overview: "Automated performance testing framework that runs benchmarks, detects regressions, and reports results integrated with the CI/CD pipeline"
+problem: "Performance regressions were often detected late in the release cycle or in production; manual performance testing was time-consuming and inconsistent"
+constraints:
+  - "Must integrate with CI/CD pipeline"
+  - "Must detect regressions automatically"
+  - "Must handle noisy benchmark results"
+approach: "Built a framework that runs performance benchmarks on every commit, uses statistical methods to detect regressions, and reports results to pull requests"
+keyDecisions:
+  - decision: "Use statistical methods for regression detection"
+    reasoning: "Benchmarks are inherently noisy; statistical methods (confidence intervals, t-tests) distinguish real regressions from noise"
+  - decision: "Block PRs with regressions"
+    reasoning: "Making regressions block merges creates accountability and prevents performance degradation"
+techStack:
+  - "Java"
+  - "Python"
+  - "Jenkins"
+  - "AWS"
+impact:
+  qualitative: "Prevented performance regressions from reaching production, shifted performance testing left in the development cycle"
+learnings:
+  - "Statistical methods are essential for noisy benchmarks"
+  - "Integration with CI/CD is critical for adoption"
+  - "Blocking PRs creates accountability"
+featured: false
+status: completed
+order: 109
+relatedProjects:
+  - "vector"
+---
+
+## Features
+
+Kvasir provides:
+- Automated benchmark execution
+- Statistical regression detection
+- CI/CD integration
+- PR status reporting
+- Historical trend tracking

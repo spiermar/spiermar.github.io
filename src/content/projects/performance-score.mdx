@@ -1,0 +1,44 @@
+---
+title: "Performance Score"
+role: "Performance Architect"
+year: 2019
+outcomeSummary: "Created a Lighthouse-inspired compound metric representing user experience, used to model performance impact on retention"
+overview: "Compound performance metric combining multiple signals (load time, interaction latency, errors) into a single score representing overall user experience quality"
+problem: "Individual metrics (P95 latency, error rate) didn't correlate well with user behavior; a holistic metric was needed to prioritize performance work"
+constraints:
+  - "Must combine multiple metrics into a single score"
+  - "Must correlate with user retention"
+  - "Must be actionable for engineering teams"
+approach: "Designed a weighted scoring system inspired by Lighthouse that combines client-side metrics, validated through correlation analysis with user retention data"
+keyDecisions:
+  - decision: "Model score after Lighthouse"
+    reasoning: "Lighthouse's scoring model is well-understood and provides a familiar interface for web developers"
+  - decision: "Weight metrics by correlation with retention"
+    reasoning: "Metrics that correlate more strongly with retention should have higher weight in the overall score"
+techStack:
+  - "Python"
+  - "Spark"
+  - "Elasticsearch"
+impact:
+  qualitative: "Enabled data-driven prioritization of performance work, correlated engineering efforts with user retention impact"
+learnings:
+  - "Compound metrics are more actionable than individual metrics"
+  - "Correlation with business metrics validates the score"
+  - "Weights should be recalibrated periodically"
+featured: false
+status: completed
+order: 110
+relatedProjects:
+  - "icarus"
+---
+
+## Score Components
+
+Performance Score combines:
+- Initial load time
+- Time to interactive
+- Interaction latency
+- Error rate
+- App crash rate (mobile)
+
+Each component is weighted based on correlation with user retention, with weights recalibrated quarterly.

@@ -1,0 +1,52 @@
+---
+title: "Icarus"
+role: "Performance Architect"
+year: 2019
+outcomeSummary: "Built real user performance monitoring processing 180B+ events daily with anomaly detection and alerting"
+overview: "Real User Monitoring (RUM) solution capturing and analyzing performance metrics from Netflix's 200M+ subscribers, with GUI for analysis, alerting, and anomaly detection"
+problem: "Understanding real user performance at Netflix scale required processing billions of events daily and identifying anomalies that impact user experience"
+constraints:
+  - "Must handle 180B+ events per day"
+  - "Must detect anomalies in near real-time"
+  - "Must correlate performance with user behavior"
+approach: "Built a distributed event processing pipeline with real-time anomaly detection, integrated with Netflix's observability and alerting infrastructure"
+keyDecisions:
+  - decision: "Process events in real-time rather than batch"
+    reasoning: "Real-time processing enables faster detection and response to performance issues affecting users"
+  - decision: "Build custom anomaly detection"
+    reasoning: "Generic anomaly detectors don't work well with Netflix's traffic patterns; custom models reduce false positives"
+techStack:
+  - "Java"
+  - "Kafka"
+  - "Spark"
+  - "Elasticsearch"
+  - "AWS"
+impact:
+  metrics:
+    - label: "Daily Events"
+      value: "180B+ events"
+    - label: "User Coverage"
+      value: "200M+ subscribers"
+  qualitative: "Enabled correlation of performance metrics with user retention and identification of platform-specific issues"
+learnings:
+  - "Real-time processing at scale requires careful capacity planning"
+  - "Custom anomaly models outperform generic solutions"
+  - "Correlation with user behavior drives prioritization"
+featured: false
+status: completed
+order: 105
+relatedProjects:
+  - "vector"
+  - "end-to-end-tracing"
+  - "performance-score"
+---
+
+## Architecture
+
+Icarus processes events through:
+1. Client-side beacon collection
+2. Kafka-based event ingestion
+3. Spark streaming for real-time processing
+4. Elasticsearch for storage and querying
+5. Custom anomaly detection models
+6. Web UI for analysis and alerting

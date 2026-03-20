@@ -1,0 +1,52 @@
+---
+title: "FlameScope"
+role: "Performance Architect"
+year: 2018
+outcomeSummary: "Open-sourced a visualization tool for exploring flame graphs across time ranges, widely adopted in the industry for performance analysis"
+overview: "A visualization tool that allows engineers to explore flame graphs across specific time ranges, enabling quick identification of performance issues in production"
+problem: "Traditional flame graphs show aggregated data over entire profiling sessions, making it difficult to identify issues that only occur in specific time windows"
+constraints:
+  - "Must work with continuous profiling data"
+  - "Must allow arbitrary time range selection"
+  - "Must be usable by engineers without deep profiling expertise"
+approach: "Built a web-based tool with a time selection UI that dynamically generates flame graphs for selected ranges, using d3-flame-graph for rendering"
+keyDecisions:
+  - decision: "Open source the tool"
+    reasoning: "The broader community could benefit from this capability, and open sourcing would drive adoption and contributions"
+    alternatives:
+      - "Keep internal as Netflix proprietary tool"
+  - decision: "Use sub-second time selection"
+    reasoning: "Performance issues often manifest in sub-second windows, so the tool needs millisecond-level granularity"
+techStack:
+  - "Python"
+  - "JavaScript"
+  - "D3.js"
+  - "Flask"
+impact:
+  metrics:
+    - label: "GitHub Stars"
+      value: "3101 stars"
+    - label: "Industry Adoption"
+      value: "Widely adopted for production debugging"
+  qualitative: "Became a go-to tool for time-based performance analysis, featured in Netflix Tech Blog"
+learnings:
+  - "Time-based filtering reveals issues invisible in aggregated views"
+  - "Open sourcing drives adoption and community contributions"
+  - "Sub-second granularity is essential for production debugging"
+featured: true
+status: completed
+order: 1
+relatedProjects:
+  - "d3-flame-graph"
+  - "flamecloud"
+---
+
+## How It Works
+
+FlameScope allows engineers to:
+1. Load continuous profiling data
+2. Select arbitrary time ranges on a timeline
+3. View the flame graph for that specific window
+4. Compare flame graphs across different time ranges
+
+This is particularly useful for identifying sporadic issues and correlating performance changes with specific events.

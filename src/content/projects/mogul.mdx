@@ -1,0 +1,41 @@
+---
+title: "Mogul"
+role: "Performance Architect"
+year: 2018
+outcomeSummary: "Built a system demand analysis tool for visualizing resource utilization patterns across Netflix infrastructure"
+overview: "System demand analysis tool visualizing data flows and resource dependencies across large-scale distributed systems"
+problem: "Understanding system demand patterns across hundreds of microservices required aggregating and correlating metrics from multiple sources"
+constraints:
+  - "Must handle data from hundreds of services"
+  - "Must show temporal patterns"
+  - "Must identify bottlenecks and resource contention"
+approach: "Built a tool that aggregates system metrics, correlates demand patterns, and visualizes resource flows across the infrastructure"
+keyDecisions:
+  - decision: "Use time-series correlation for bottleneck detection"
+    reasoning: "Bottlenecks manifest as correlated demand spikes; time-series analysis identifies these patterns automatically"
+techStack:
+  - "Java"
+  - "Python"
+  - "Elasticsearch"
+  - "D3.js"
+impact:
+  qualitative: "Enabled capacity planning and identification of resource contention across services"
+learnings:
+  - "System demand visualization reveals hidden dependencies"
+  - "Time-series correlation is effective for bottleneck detection"
+featured: false
+status: completed
+order: 107
+relatedProjects:
+  - "vector"
+  - "slalom"
+---
+
+## Features
+
+Mogul provides:
+- System demand heatmaps
+- Resource flow visualization
+- Dependency mapping
+- Bottleneck identification
+- Capacity planning insights

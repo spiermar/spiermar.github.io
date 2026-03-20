@@ -1,0 +1,44 @@
+---
+title: "Flame Graphs on pprof"
+role: "Performance Architect"
+year: 2019
+outcomeSummary: "Integrated flame graph visualization into Google's pprof profiler, making it accessible to Go developers worldwide"
+overview: "Integration of d3-flame-graph into pprof, bringing interactive flame graph visualization to Go's built-in profiling tool"
+problem: "Go developers use pprof for profiling, but pprof's visualization options were limited and didn't include interactive flame graphs"
+constraints:
+  - "Must integrate with existing pprof web interface"
+  - "Must work with Go profiling data format"
+  - "Must maintain pprof's existing functionality"
+approach: "Contributed d3-flame-graph integration to pprof's web UI, mapping Go profiling data to hierarchical format"
+keyDecisions:
+  - decision: "Contribute to pprof rather than build separate tool"
+    reasoning: "Pprof is the standard Go profiling tool; integration gives immediate access to all Go developers"
+techStack:
+  - "Go"
+  - "JavaScript"
+  - "D3.js"
+impact:
+  metrics:
+    - label: "Users"
+      value: "All Go developers using pprof web interface"
+  qualitative: "Made flame graphs accessible to millions of Go developers through their standard tooling"
+learnings:
+  - "Integration with standard tools drives adoption"
+  - "Contributing to open source projects multiplies impact"
+  - "Go profiling data maps well to hierarchical format"
+featured: false
+status: completed
+order: 104
+relatedProjects:
+  - "d3-flame-graph"
+---
+
+## Usage
+
+After profiling a Go application:
+
+```bash
+go tool pprof -http=:8080 cpu.prof
+```
+
+Navigate to the "Flame Graph" view in the pprof web UI to see interactive flame graphs powered by d3-flame-graph.
