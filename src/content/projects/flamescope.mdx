@@ -3,7 +3,7 @@ title: "FlameScope"
 role: "Performance Architect"
 year: 2018
 outcomeSummary: "Open-sourced a visualization tool for exploring flame graphs across time ranges, widely adopted in the industry for performance analysis"
-overview: "A visualization tool that allows engineers to explore flame graphs across specific time ranges, enabling quick identification of performance issues in production"
+overview: "A visualization tool that displays profiling data as an interactive subsecond-offset heat map, allowing engineers to explore flame graphs across specific time ranges to identify perturbations, variance, and single-threaded execution issues"
 problem: "Traditional flame graphs show aggregated data over entire profiling sessions, making it difficult to identify issues that only occur in specific time windows"
 constraints:
   - "Must work with continuous profiling data"
@@ -43,10 +43,10 @@ relatedProjects:
 
 ## How It Works
 
-FlameScope allows engineers to:
-1. Load continuous profiling data
-2. Select arbitrary time ranges on a timeline
-3. View the flame graph for that specific window
-4. Compare flame graphs across different time ranges
+FlameScope begins by displaying the input data as an interactive subsecond-offset heat map. This shows patterns in the data. You can then select a time range to highlight different patterns, and a flame graph will be generated just for that time range.
 
-This is particularly useful for identifying sporadic issues and correlating performance changes with specific events.
+This is particularly useful for identifying:
+- Perturbations
+- Variance
+- Single-threaded execution issues
+- Sporadic performance problems
