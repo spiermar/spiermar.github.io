@@ -1,0 +1,32 @@
+---
+date: 2018-04-01
+title: "Open Sourced FlameScope"
+type: "milestone"
+description: "Created and open-sourced FlameScope, a visualization tool for exploring different time ranges as flame graphs. The tool helps identify performance perturbations, variance, and patterns that would be invisible in aggregate views. Over 3,100 GitHub stars."
+skills:
+  - "Performance Analysis"
+  - "Python"
+  - "React"
+  - "Data Visualization"
+  - "Open Source"
+---
+
+## The Problem
+
+Traditional flame graphs show aggregated profiles, but performance issues often occur in specific time windows. A CPU spike lasting 200ms would be invisible in an hour-long profile. I needed a way to see patterns across time and zoom into specific ranges.
+
+## The Innovation
+
+FlameScope combines two visualizations:
+1. A subsecond-offset heat map showing patterns over time
+2. Interactive flame graphs for selected time ranges
+
+This lets you see *when* problems occur and *what* code is responsible, without filtering through irrelevant data.
+
+## Impact
+
+FlameScope was presented at conferences and adopted by companies dealing with performance variance. It revealed patterns that were previously invisible to engineers.
+
+## What I Learned
+
+The right visualization can make complex data intuitive. FlameScope taught me that tools should reveal patterns, not just display data.
