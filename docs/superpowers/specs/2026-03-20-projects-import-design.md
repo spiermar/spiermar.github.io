@@ -56,30 +56,46 @@ Three projects marked as featured:
 Each project MDX file follows the schema from `src/content.config.ts`:
 
 ### Required Fields
-- `title` - Project name
-- `role` - Job role at time (inferred from resume: "Performance Architect" for Netflix era)
-- `year` - Derived from GitHub repo creation date
-- `outcomeSummary` - Brief impact summary
-- `overview` - High-level description
-- `problem` - What problem it solves
-- `constraints` - Limitations and challenges
-- `approach` - Solution strategy
-- `keyDecisions` - Technical decisions with reasoning
-- `techStack` - Technologies used (from repo languages + resume)
-- `impact` - Metrics and qualitative results
-- `learnings` - Key takeaways
+- `title: string` - Project name
+- `role: string` - Job role at time (inferred from resume: "Performance Architect" for Netflix era)
+- `year: number` - Derived from GitHub repo creation date
+- `outcomeSummary: string` - Brief impact summary
+- `overview: string` - High-level description
+- `problem: string` - What problem it solves
+- `constraints: string[]` - Array of limitation strings
+- `approach: string` - Solution strategy
+- `keyDecisions: { decision: string, reasoning: string, alternatives?: string[] }[]` - Array of decision objects
+- `techStack: string[]` - Array of technology names
+- `impact: { metrics?: { label: string, value: string }[], qualitative: string }` - Impact object with optional metrics
+- `learnings: string[]` - Array of takeaway strings
 
 ### Optional Fields
-- `duration` - Project timeframe
-- `teamSize` - Team size if applicable
-- `featured` - Boolean (true for 3 featured projects)
-- `status` - completed/ongoing/archived (default: completed)
-- `order` - Sort order
-- `relatedProjects` - Cross-references to related projects
-- `relatedDecisions` - Related decision records
+- `duration: string` - Project timeframe (e.g., "2 years")
+- `teamSize: number` - Team size if applicable
+- `featured: boolean` - true for 3 featured projects, false otherwise
+- `status: "completed" | "ongoing" | "archived"` - Default: completed
+- `order: number` - Lower numbers sort first. Featured: 1-10, others: 100+
+- `relatedProjects: string[]` - Array of project slugs (filename without .mdx)
+- `relatedDecisions: string[]` - Array of decision slugs (leave empty for now)
+
+### File Naming Convention
+- Use kebab-case matching import filenames (e.g., `d3-flame-graph.mdx`, `flamescope.mdx`)
+- Slug is derived from filename without extension
+
+### Order Field Strategy
+- Featured projects: 1, 2, 3 (FlameScope, d3-flame-graph, Vector)
+- Non-featured projects: 100+ (sorted alphabetically within category)
 
 ### Placeholders
 Use `TODO: Add details` for fields that cannot be inferred from available sources.
+
+### Projects with Minimal Source Data
+For projects like MyAdventure.IO with no description in import file:
+1. Research GitHub repo (https://github.com/myadventure)
+2. If still insufficient, create minimal entry with:
+   - `outcomeSummary: "TODO: Add outcome summary"`
+   - `overview: "TODO: Add overview"`
+   - Other required fields populated with best available inference
 
 ## Execution Plan
 
@@ -90,12 +106,17 @@ Use `TODO: Add details` for fields that cannot be inferred from available source
    - Stars, forks → impact metrics
    - Description → overview
 2. Cross-reference with resume for context
+3. Use BlogLink from import files for:
+   - `overview` content enrichment
+   - `impact` metrics and qualitative results
+   - `approach` details
 
 ### Phase 2: Write MDX Files
 1. Create 15 new `.mdx` files in `src/content/projects/`
-2. Populate frontmatter with researched data
-3. Add placeholders for missing fields
-4. Set featured flags
+2. Use kebab-case filenames matching import files
+3. Populate frontmatter with researched data
+4. Add placeholders for missing fields
+5. Set featured flags and order values
 
 ### Phase 3: Cleanup
 1. Delete 8 placeholder files:
@@ -111,15 +132,28 @@ Use `TODO: Add details` for fields that cannot be inferred from available source
 ### Phase 4: Validate
 1. Run `npm run check` for TypeScript/schema validation
 2. Run `npm run build` to verify build succeeds
+3. Verify `relatedProjects` slugs match actual filenames
 
 ## Project Cross-References
 
 Projects that work together should reference each other:
 - d3-flame-graph ↔ burn (converter + visualization)
 - d3-flame-graph ↔ FlameScope (shared visualization)
+- d3-flame-graph ↔ d3-heatmap2 (related D3 visualizations)
+- d3-flame-graph ↔ flame-graphs-on-pprof (shared visualization)
 - FlameScope ↔ FlameCloud (analysis + collection)
 - Vector ↔ Icarus (on-host + real user monitoring)
-- d3-flame-graph ↔ Flame Graphs on pprof (shared visualization)
+- Vector ↔ Kvasir (monitoring + automated testing)
+- Icarus ↔ end-to-end-tracing (Netflix observability suite)
+- Icarus ↔ performance-score (metrics + real user data)
+
+### Cross-Reference Format
+Use slug (filename without .mdx) in `relatedProjects` array:
+```yaml
+relatedProjects:
+  - "d3-flame-graph"
+  - "burn"
+```
 
 ## Sources
 
