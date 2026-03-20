@@ -1,13 +1,25 @@
 ---
 title: "The Open Proxy Saga"
 publishDate: "2011-10-27"
-description: "A couple weeks ago I was messing with a few Apache configs, trying a few things that could improve the server performance. Everything was fine until late last week when I noticed that the page was really slow."
+description: "How an accidental `ProxyRequests On` configuration turned my Apache server into an open proxy, attracting hundreds of users from proxy lists worldwide—and the steps I took to diagnose, secure, and optimize the server."
 tags:
   - "apache"
-  - "performance"
+  - "bandwidth"
+  - "concurrent-users"
+  - "cpu"
+  - "maxclients"
+  - "memory"
   - "proxy"
+  - "proxy-lists"
+  - "proxyrequests"
+  - "redirect"
+  - "redirection"
+  - "server"
+  - "traffic"
 draft: false
 ---
+
+![Server monitoring graph](./images/10-20-2011-4-53-16-PM-300x76.png)
 
 A couple weeks ago I was messing with a few Apache configs, trying a few things that could improve the server performance. Everything was fine until late last week when I noticed that the page was really slow. Initially I thought it was a connectivity issue but after a couple hours I decided to troubleshoot it. First thing to do is check the logs for any possible explanation. Found two interesting messages:
 
