@@ -34,7 +34,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SEO from '../components/SEO.astro';
 import StructuredData from '../components/StructuredData.astro';
 import ForwardLink from '../components/ForwardLink.astro';
-import Testimonials from '../components/Testimonials.astro';
 import { getCollection } from 'astro:content';
 import { siteConfig } from '../config';
 
@@ -119,9 +118,6 @@ const caseSnapshots = featuredProjects.slice(0, 3);
       </p>
       <ForwardLink href="/journey" text="Read my journey" variant="muted" />
     </section>
-
-    <!-- Testimonials -->
-    <Testimonials limit={3} />
 
     <!-- What I Think About -->
     <section class="thinking">
