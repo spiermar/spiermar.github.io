@@ -77,9 +77,11 @@ const caseSnapshots = featuredProjects.slice(0, 3);
         <!-- Left: Value Statement -->
         <div class="hero-left">
           <h1 class="hero-title">
-            Hi, I'm Martin.<br/>
-            <span class="hero-title-emphasis">I lead engineering organizations centered on making complex systems faster, more reliable, and easier for engineers to build on.</span>
+            Hi, I'm Martin 👋<br/>
           </h1>
+          <p class="hero-sub">
+            {siteConfig.author.bio}
+          </p>
           <p class="hero-meta">
             {siteConfig.author.name} · {siteConfig.author.title}
           </p>
@@ -106,9 +108,6 @@ const caseSnapshots = featuredProjects.slice(0, 3);
 
     <!-- Introduction -->
     <section class="introduction">
-      <p>
-        I'm {siteConfig.author.name}, {siteConfig.author.title} {siteConfig.author.bio}
-      </p>
       <p>
         This site documents my engineering journey—from building performance tools to leading engineering teams at scale. Here you'll find case studies with measurable outcomes, technical writing on AI and performance, talks from industry conferences, and transparent decision logs that show how I approach complex trade-offs.
       </p>
