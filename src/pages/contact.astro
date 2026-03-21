@@ -36,7 +36,7 @@ const hasCalendar = siteConfig.contact.calendarUrl.length > 0;
     <div class="contact-layout">
       <div class="contact-form-zone">
         <h2>Send a message</h2>
-        <p class="intro">I'd love to hear from you. Fill out the form below and I'll get back to you soon.</p>
+        <p class="intro">I read every message. Expect a reply within a few days.</p>
         
         {hasForm ? (
           <form 
@@ -92,7 +92,6 @@ const hasCalendar = siteConfig.contact.calendarUrl.length > 0;
           <a href={`mailto:${siteConfig.author.email}`} class="email-link">
             {siteConfig.author.email}
           </a>
-          <p class="context">I read every email. Expect a reply within a few days.</p>
         </section>
         
         {hasCalendar && (
@@ -262,7 +261,7 @@ const hasCalendar = siteConfig.contact.calendarUrl.length > 0;
 
     .email-link {
       display: block;
-      font-size: 1rem;
+      font-size: 2rem;
       font-weight: 500;
       color: var(--color-text);
       text-decoration: none;
