@@ -102,6 +102,9 @@ const conferenceCount = sortedTalks.filter(t => t.data.type === 'conference').le
         {pagesConfig.speaking.intro}
       </p>
       <PageStats text={`${totalTalks} talks · ${conferenceCount} conferences`} />
+      <p class="contact-cta">
+        Interested in a speaking engagement? <a href="/contact">Get in touch</a>.
+      </p>
     </header>
 
     {years.length > 0 ? (
@@ -161,6 +164,20 @@ const conferenceCount = sortedTalks.filter(t => t.data.type === 'conference').le
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
+    }
+
+    .contact-cta {
+      margin-top: 1rem;
+      color: var(--color-text-secondary);
+    }
+
+    .contact-cta a {
+      color: var(--color-link);
+      text-decoration: underline;
+    }
+
+    .contact-cta a:hover {
+      color: var(--color-link-hover);
     }
 
     @media (max-width: 768px) {

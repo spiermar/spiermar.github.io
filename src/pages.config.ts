@@ -105,7 +105,7 @@ export const pagesConfig = {
     title: 'Speaking - Talks & Presentations',
     description: 'Conference talks, meetup presentations, podcast appearances, and workshops on software engineering, architecture, and technical leadership.',
     heading: 'Speaking',
-    intro: 'I regularly speak at conferences, meetups, and on podcasts about software architecture, engineering practices, and technical leadership. Here\'s a collection of my talks and presentations.',
+    intro: 'I regularly speak at conferences, meetups, and on podcasts. I\'ve presented to groups ranging from intimate gatherings of six to large audiences of 6,000, and most of my talks focus on performance engineering, technical leadership, software architecture, engineering practices, engineering management, engineering culture, innovation, and technology.  Here\'s a collection of my talks and presentations.',
   },
 
   /**
@@ -115,7 +115,7 @@ export const pagesConfig = {
     title: 'Adventures - Travel & Exploration',
     description: 'A collection of hiking, climbing, and travel adventures from around the world.',
     heading: 'Adventures',
-    intro: 'I love to travel, adventure, not tourism. Getting to know new places, new cultures and new people are the most fulfilling things one can experience in life. Overlanding, backpacking and adventure traveling are the best ways of getting to know new places.',
+    intro: 'I love to travel, adventure, not tourism. Getting to know new places, new cultures and new people are the most fulfilling things one can experience in life. Overlanding, backpacking and adventure traveling are the best ways of getting to know new places, not 5-star hotels and guided tours.',
   },
 
   /**
