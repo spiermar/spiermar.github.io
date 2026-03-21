@@ -71,3 +71,6 @@ coverage/
 
 # CodeNomad
 .codenomad/
+
+# superpowers
+docs/superpowers
