@@ -305,17 +305,17 @@ const adventuresCollection = defineCollection({
     /** Date of adventure */
     date: z.coerce.date(),
 
-    /** External URL to cover image */
-    coverImage: z.string().url(),
+    /** Cover image URL (external or local path) */
+    coverImage: z.string(),
 
     /** Status (optional, inferred from date if not provided) */
     status: z.enum(['completed', 'planned']).optional(),
 
-    /** External gallery URL (optional) */
+    /** Gallery URL (external, optional) */
     gallery: z.string().url().optional(),
 
-    /** Individual image URLs (optional) */
-    images: z.array(z.string().url()).optional(),
+    /** Individual image URLs (external or local paths, optional) */
+    images: z.array(z.string()).optional(),
 
     /** Category (optional) */
     category: z.enum(['hiking', 'climbing', 'backpacking', 'travel', 'overlanding', 'adventure-travel']).optional(),
