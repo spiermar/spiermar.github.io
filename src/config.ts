@@ -116,6 +116,9 @@ export const siteConfig = {
     
     /** Bluesky profile URL */
     bluesky: getEnv('SOCIAL_BLUESKY', ''),
+    
+    /** Instagram profile URL */
+    instagram: getEnv('SOCIAL_INSTAGRAM', ''),
   },
   
   /**

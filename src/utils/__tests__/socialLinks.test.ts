@@ -11,6 +11,7 @@ describe('socialLinks', () => {
         twitter: '',
         mastodon: '',
         bluesky: '',
+        instagram: '',
       };
 
       expect(getSocialLinks(social)).toEqual([]);
@@ -23,6 +24,7 @@ describe('socialLinks', () => {
         twitter: '',
         mastodon: '',
         bluesky: '',
+        instagram: '',
       };
 
       const result = getSocialLinks(social);
@@ -40,6 +42,7 @@ describe('socialLinks', () => {
         twitter: 'https://twitter.com/user',
         mastodon: 'https://mastodon.social/@user',
         bluesky: 'https://bsky.app/profile/user',
+        instagram: 'https://www.instagram.com/user',
       };
 
       const result = getSocialLinks(social);
@@ -49,6 +52,7 @@ describe('socialLinks', () => {
         'Twitter',
         'Mastodon',
         'Bluesky',
+        'Instagram',
       ]);
     });
 
@@ -59,6 +63,7 @@ describe('socialLinks', () => {
         twitter: '',
         mastodon: '',
         bluesky: 'https://bsky.app/profile/user',
+        instagram: '',
       };
 
       const result = getSocialLinks(social);
@@ -75,6 +80,7 @@ describe('socialLinks', () => {
         twitter: '',
         mastodon: '',
         bluesky: '',
+        instagram: '',
       };
 
       const result = getSocialLinks(social);
@@ -88,6 +94,7 @@ describe('socialLinks', () => {
         twitter: '',
         mastodon: '',
         bluesky: '',
+        instagram: '',
       };
 
       const additionalLinks = [{ platform: 'Resume', url: 'https://example.com/resume' }];
@@ -105,6 +112,7 @@ describe('socialLinks', () => {
         twitter: '',
         mastodon: '',
         bluesky: '',
+        instagram: '',
       };
 
       const additionalLinks = [{ platform: 'Resume', url: 'https://example.com/resume' }];
