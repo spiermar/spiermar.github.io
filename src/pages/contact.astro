@@ -2,19 +2,8 @@
 /**
  * Contact Page
  * 
- * Minimal, intentional contact page with clear visual hierarchy and zone-based layout.
- * Prioritizes email as the primary contact method while providing secondary social links.
- * 
- * Layout Structure:
- * - Zone 1 (Primary): Email address with context about response time
- * - Zone 2 (Secondary): Social media links (only shown if configured)
- * 
- * Features:
- * - Clean, distraction-free design
- * - Large, prominent email link
- * - Automatic filtering of configured social links
- * - Responsive layout
- * - Clear visual hierarchy
+ * Contact page with form, email, calendar booking, and social links.
+ * Two-column layout on desktop, stacked on mobile.
  * 
  * Route: /contact
  * 
@@ -29,6 +18,8 @@ import { pagesConfig } from '../pages.config';
 import { getSocialLinks } from '../utils/socialLinks';
 
 const socialLinks = getSocialLinks(siteConfig.social);
+const hasForm = siteConfig.contact.formspreeFormId.length > 0;
+const hasCalendar = siteConfig.contact.calendarUrl.length > 0;
 ---
 
 <BaseLayout>
@@ -40,63 +31,242 @@ const socialLinks = getSocialLinks(siteConfig.social);
   />
 
   <main class="contact-page">
-    <!-- Zone 1: Primary Intent -->
-    <section class="primary-zone">
-      <h1>{pagesConfig.contact.heading}</h1>
-      <a href={`mailto:${siteConfig.author.email}`} class="email-link">
-        {siteConfig.author.email}
-      </a>
-      <p class="context">
-        I read every email. Expect a reply within a few days.
-      </p>
-    </section>
-
-    <!-- Zone 2: Secondary (Social) -->
-    {socialLinks.length > 0 && (
-      <section class="secondary-zone">
-        <h2>Elsewhere</h2>
-        <div class="social-links">
-          {socialLinks.map((link, index) => (
-            <>
-              <a href={link.url} target="_blank" rel="noopener noreferrer">
-                <SocialIcon platform={link.platform} />
-                {link.platform}
-              </a>
-              {index < socialLinks.length - 1 && <span class="separator">·</span>}
-            </>
-          ))}
-        </div>
-      </section>
-    )}
+    <h1>{pagesConfig.contact.heading}</h1>
+    
+    <div class="contact-layout">
+      <div class="contact-form-zone">
+        <h2>Send a message</h2>
+        <p class="intro">I'd love to hear from you. Fill out the form below and I'll get back to you soon.</p>
+        
+        {hasForm ? (
+          <form 
+            action={`https://formspree.io/f/${siteConfig.contact.formspreeFormId}`}
+            method="POST"
+            class="contact-form"
+          >
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                required 
+                placeholder="Your name"
+              />
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required 
+                placeholder="your@email.com"
+              />
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="5" 
+                required
+                placeholder="What would you like to discuss?"
+              ></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">
+              Send Message
+            </button>
+          </form>
+        ) : (
+          <p class="form-unavailable">Contact form coming soon. Please use email below.</p>
+        )}
+      </div>
+      
+      <div class="contact-sidebar">
+        <section class="sidebar-section">
+          <h3>Email</h3>
+          <a href={`mailto:${siteConfig.author.email}`} class="email-link">
+            {siteConfig.author.email}
+          </a>
+          <p class="context">I read every email. Expect a reply within a few days.</p>
+        </section>
+        
+        {hasCalendar && (
+          <section class="sidebar-section">
+            <h3>Schedule a Call</h3>
+            <a 
+              href={siteConfig.contact.calendarUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="calendar-link"
+            >
+              Book a time on my calendar
+            </a>
+          </section>
+        )}
+        
+        {socialLinks.length > 0 && (
+          <section class="sidebar-section">
+            <h3>Elsewhere</h3>
+            <div class="social-links">
+              {socialLinks.map((link, index) => (
+                <>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer">
+                    <SocialIcon platform={link.platform} />
+                    {link.platform}
+                  </a>
+                  {index < socialLinks.length - 1 && <span class="separator">·</span>}
+                </>
+              ))}
+            </div>
+          </section>
+        )}
+      </div>
+    </div>
   </main>
 
   <style>
     .contact-page {
-      max-width: 700px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 3rem 1.5rem 8rem;
     }
 
-    .primary-zone {
-      margin-bottom: 3rem;
+    .contact-page h1 {
+      font-size: clamp(1.75rem, 5vw, 2.5rem);
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: 2.5rem;
+      letter-spacing: -0.02em;
     }
 
-    .primary-zone h1 {
-      font-size: 1.125rem;
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-form-zone h2 {
+      font-size: 1rem;
       font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
       color: var(--color-text-muted);
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.01em;
+      margin-bottom: 0.75rem;
+    }
+
+    .intro {
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 0.875rem 1rem;
+      border: 1px solid var(--color-border);
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-family: inherit;
+      color: var(--color-text);
+      background: var(--color-background);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--color-text-muted);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--color-text-muted);
+      box-shadow: 0 0 0 3px rgba(128, 128, 128, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      padding: 1rem 1.5rem;
+      background: var(--color-text);
+      color: var(--color-background);
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .submit-btn:hover {
+      opacity: 0.85;
+    }
+
+    .form-unavailable {
+      color: var(--color-text-muted);
+      font-style: italic;
+    }
+
+    .contact-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .sidebar-section {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .sidebar-section:first-child {
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .sidebar-section h3 {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+      margin-bottom: 0.75rem;
     }
 
     .email-link {
       display: block;
-      font-size: clamp(1.75rem, 5vw, 2.5rem);
-      font-weight: 600;
+      font-size: 1rem;
+      font-weight: 500;
       color: var(--color-text);
       text-decoration: none;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.5rem;
       transition: color 0.2s ease;
     }
 
@@ -105,23 +275,26 @@ const socialLinks = getSocialLinks(siteConfig.social);
     }
 
     .context {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    .calendar-link {
+      display: inline-block;
       font-size: 1rem;
-      color: var(--color-text-muted);
-      line-height: 1.6;
-    }
-
-    .secondary-zone {
-      padding-top: 3rem;
-      border-top: 1px solid var(--color-border);
-    }
-
-    .secondary-zone h2 {
-      font-size: 0.8125rem;
       font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--color-text-muted);
-      margin-bottom: 1rem;
+      color: var(--color-text);
+      text-decoration: none;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--color-border);
+      border-radius: 0.5rem;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .calendar-link:hover {
+      background: var(--color-surface);
+      border-color: var(--color-text-muted);
     }
 
     .social-links {
@@ -137,7 +310,7 @@ const socialLinks = getSocialLinks(siteConfig.social);
       gap: 0.4rem;
       color: var(--color-text-secondary);
       text-decoration: none;
-      font-size: 1rem;
+      font-size: 0.9375rem;
       transition: color 0.2s ease;
     }
 
@@ -150,17 +323,22 @@ const socialLinks = getSocialLinks(siteConfig.social);
       user-select: none;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
       .contact-page {
-        padding: 4rem 1rem 6rem;
+        padding: 2rem 1rem 6rem;
       }
 
-      .primary-zone {
-        margin-bottom: 4rem;
+      .contact-page h1 {
+        font-size: 1.5rem;
       }
 
-      .primary-zone h1 {
-        font-size: 1rem;
+      .contact-sidebar {
+        gap: 1.5rem;
       }
     }
   </style>
