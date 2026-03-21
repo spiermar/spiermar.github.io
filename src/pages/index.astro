@@ -14,7 +14,7 @@
  * Sections:
  * 1. Hero - Value statement with featured case study snapshots
  * 2. Introduction - Brief personal introduction with journey link
- * 3. Testimonials - Social proof from colleagues and clients
+ * 3. Recent Writing - Latest blog posts from the writing collection
  * 4. Thinking - Problems and topics of interest
  * 5. CTA - Call-to-action for work opportunities
  * 
@@ -48,13 +48,15 @@ const featuredProjects = allProjects
   .sort((a, b) => (a.data.order || 999) - (b.data.order || 999))
   .slice(0, 2);
 
-/**
- * Case snapshots for hero display
- * 
- * Takes up to 3 featured projects to showcase in the hero section,
- * providing immediate evidence of impact and outcomes.
- */
 const caseSnapshots = featuredProjects.slice(0, 3);
+
+const allArticles = await getCollection('writing', ({ data }) => {
+  return data.draft === false;
+});
+
+const recentArticles = allArticles
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+  .slice(0, 5);
 ---
 
 <BaseLayout>
@@ -111,6 +113,21 @@ const caseSnapshots = featuredProjects.slice(0, 3);
       <p>
         This site documents my engineering journey—from building performance tools to leading engineering teams at scale. Here you'll find case studies with measurable outcomes, technical writing on AI and performance, talks from industry conferences, and transparent decision logs that show how I approach complex trade-offs.
       </p>
+    </section>
+
+    <section class="recent-writing">
+      <h2>Recent Writing</h2>
+      <div class="recent-posts-list">
+        {recentArticles.map((article) => (
+          <a href={`/writing/${article.id}`} class="recent-post">
+            <span class="post-date">
+              {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: 'numeric' }).format(article.data.publishDate)}
+            </span>
+            <span class="post-title">{article.data.title}</span>
+          </a>
+        ))}
+      </div>
+      <a href="/writing" class="view-all-link">View all articles →</a>
     </section>
 
     <!-- What I Think About -->
@@ -289,6 +306,64 @@ const caseSnapshots = featuredProjects.slice(0, 3);
       color: var(--color-text);
     }
 
+    .recent-writing {
+      margin-bottom: 5rem;
+    }
+
+    .recent-writing h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .recent-posts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .recent-post {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--color-border);
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .recent-post:hover {
+      opacity: 0.7;
+    }
+
+    .post-date {
+      flex-shrink: 0;
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .post-title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--color-text);
+      line-height: 1.4;
+    }
+
+    .view-all-link {
+      display: inline-block;
+      font-size: 0.9375rem;
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .view-all-link:hover {
+      color: var(--color-text);
+    }
+
     .thinking {
       margin-bottom: 5rem;
     }
@@ -370,6 +445,11 @@ const caseSnapshots = featuredProjects.slice(0, 3);
 
       .introduction {
         font-size: 1rem;
+      }
+
+      .recent-post {
+        flex-direction: column;
+        gap: 0.25rem;
       }
 
       .cta-buttons {
