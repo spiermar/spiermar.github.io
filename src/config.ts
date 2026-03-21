@@ -122,6 +122,17 @@ export const siteConfig = {
   },
   
   /**
+   * Contact form configuration
+   */
+  contact: {
+    /** Formspree form ID (create at formspree.io) */
+    formspreeFormId: getEnv('FORMSPREE_FORM_ID', ''),
+    
+    /** Calendar booking URL */
+    calendarUrl: getEnv('CALENDAR_URL', ''),
+  },
+  
+  /**
    * Navigation links
    * 
    * Main site navigation structure. Order determines display order in the nav bar.
