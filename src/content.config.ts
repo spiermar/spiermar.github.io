@@ -314,6 +314,9 @@ const adventuresCollection = defineCollection({
     /** Gallery URL (external, optional) */
     gallery: z.string().url().optional(),
 
+    /** External link for more details (optional) */
+    link: z.string().url().optional(),
+
     /** Individual image URLs (external or local paths, optional) */
     images: z.array(z.string()).optional(),
 
