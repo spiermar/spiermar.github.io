@@ -41,6 +41,7 @@ jobs:
           SOCIAL_INSTAGRAM: 'https://www.instagram.com/martin.spier'
           SITE_TITLE: 'Martin Spier'
           SITE_DESCRIPTION: 'Engineering Leader focused on AI and Cloud Infrastructure, Performance and Reliability, and Platform Engineering.'
+          FORMSPREE_FORM_ID: 'https://formspree.io/f/meqpdppq'
 
   deploy:
     needs: build
