@@ -18,12 +18,15 @@ import SEO from '../components/SEO.astro';
 import { siteConfig } from '../config';
 import { pagesConfig } from '../pages.config';
 
-const socialLinks = Object.entries(siteConfig.social)
-  .filter(([_, url]) => url)
-  .map(([platform, url]) => ({
-    platform: platform.charAt(0).toUpperCase() + platform.slice(1),
-    url
-  }));
+const socialLinks = [
+  { platform: 'Resume', url: 'https://github.com/spiermar/resume.md' },
+  ...Object.entries(siteConfig.social)
+    .filter(([_, url]) => url)
+    .map(([platform, url]) => ({
+      platform: platform.charAt(0).toUpperCase() + platform.slice(1),
+      url
+    }))
+];
 ---
 
 <BaseLayout>
@@ -50,15 +53,6 @@ const socialLinks = Object.entries(siteConfig.social)
         <p>
           My technical background is in performance engineering, and that perspective continues to shape how I think about systems, teams, and products. I've built open-source and internal tools spanning profiling, flame graphs, observability, and large-scale distributed systems, and I continue to invest, advise, and stay close to the technical details. I like building organizations and platforms that reduce friction, increase leverage, and help great engineers move faster with confidence.
         </p>
-      </div>
-    </section>
-
-    <section class="secondary-zone">
-      <h2>Resume</h2>
-      <div class="resume-link">
-        <a href="https://github.com/spiermar/resume.md" target="_blank" rel="noopener noreferrer">
-          View my resume
-        </a>
       </div>
     </section>
 
@@ -121,17 +115,6 @@ const socialLinks = Object.entries(siteConfig.social)
       letter-spacing: 0.05em;
       color: var(--color-text-muted);
       margin-bottom: 1rem;
-    }
-
-    .resume-link a {
-      color: var(--color-text-secondary);
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.2s ease;
-    }
-
-    .resume-link a:hover {
-      color: var(--color-text);
     }
 
     .social-links {
