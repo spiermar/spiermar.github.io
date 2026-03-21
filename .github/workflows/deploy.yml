@@ -31,15 +31,15 @@ jobs:
           SITE_URL: 'https://spiermar.github.io'
           SITE_LANGUAGE: 'en'
           SITE_AUTHOR_NAME: 'Martin Spier'
-          SITE_AUTHOR_TITLE: 'Engineering Leader. ChatGPT Performance @ OpenAI. Advisor.'
-          SITE_AUTHOR_BIO: 'Engineering leader working at the intersection of AI infrastructure, platform, and performance engineering.'
+          SITE_AUTHOR_TITLE: 'Director, ChatGPT Performance @ OpenAI. Advisor.'
+          SITE_AUTHOR_BIO: 'Engineering Leader focused on AI and Cloud Infrastructure, Performance and Reliability, and Platform Engineering.'
           SITE_AUTHOR_EMAIL: 'hello@martinspier.io'
           SITE_AUTHOR_LOCATION: 'Los Gatos, CA'
           SOCIAL_GITHUB: 'https://github.com/spiermar'
           SOCIAL_LINKEDIN: 'https://linkedin.com/in/martin.spier'
           SOCIAL_TWITTER: 'https://x.com/martin_spier'
           SITE_TITLE: 'Martin Spier'
-          SITE_DESCRIPTION: 'Engineering leader working at the intersection of AI infrastructure, platform, and performance engineering.'
+          SITE_DESCRIPTION: 'Engineering Leader focused on AI and Cloud Infrastructure, Performance and Reliability, and Platform Engineering.'
 
   deploy:
     needs: build
