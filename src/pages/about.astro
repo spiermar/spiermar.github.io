@@ -1,0 +1,178 @@
+---
+/**
+ * About Page
+ * 
+ * Personal introduction and professional background.
+ * 
+ * Layout Structure:
+ * - Zone 1 (Primary): Main bio content
+ * - Zone 2 (Secondary): Social links
+ * 
+ * Route: /about
+ * 
+ * @page
+ */
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+import { siteConfig } from '../config';
+import { pagesConfig } from '../pages.config';
+
+const socialLinks = Object.entries(siteConfig.social)
+  .filter(([_, url]) => url)
+  .map(([platform, url]) => ({
+    platform: platform.charAt(0).toUpperCase() + platform.slice(1),
+    url
+  }));
+---
+
+<BaseLayout>
+  <SEO 
+    slot="head"
+    title={pagesConfig.about.title}
+    description={pagesConfig.about.description}
+    type="website"
+  />
+
+  <main class="about-page">
+    <section class="primary-zone">
+      <h1>{pagesConfig.about.heading}</h1>
+      
+      <div class="bio">
+        <p>
+          I'm Martin Spier — an engineering leader working at the intersection of AI, infrastructure, platform engineering, performance, and reliability. I recently moved to OpenAI, where I'm leading ChatGPT Performance. Before that, I was VP of Engineering at Parasail, focused on AI inference, and earlier spent over eight years at Netflix leading large-scale performance engineering for the global streaming service. My work has consistently centered on making complex systems faster, more reliable, and easier for engineers to build on.
+        </p>
+        
+        <p>
+          I'm especially interested in the practical side of AI: the infrastructure that makes it usable, the platform layers that make it scalable, and the workflows that make teams more effective. Lately, that includes agent-driven development, autonomous workflows, and general-purpose AI agents for productivity — alongside the platform engineering basics I've always cared about: abstraction layers, paved roads, maintainability, operational readiness, and measurable productivity.
+        </p>
+        
+        <p>
+          My technical background is in performance engineering, and that perspective continues to shape how I think about systems, teams, and products. I've built open-source and internal tools spanning profiling, flame graphs, observability, and large-scale distributed systems, and I continue to invest, advise, and stay close to the technical details. I like building organizations and platforms that reduce friction, increase leverage, and help great engineers move faster with confidence.
+        </p>
+      </div>
+    </section>
+
+    <section class="secondary-zone">
+      <h2>Resume</h2>
+      <div class="resume-link">
+        <a href="https://github.com/spiermar/resume.md" target="_blank" rel="noopener noreferrer">
+          View my resume
+        </a>
+      </div>
+    </section>
+
+    {socialLinks.length > 0 && (
+      <section class="secondary-zone">
+        <h2>Elsewhere</h2>
+        <div class="social-links">
+          {socialLinks.map((link, index) => (
+            <>
+              <a href={link.url} target="_blank" rel="noopener noreferrer">
+                {link.platform}
+              </a>
+              {index < socialLinks.length - 1 && <span class="separator">·</span>}
+            </>
+          ))}
+        </div>
+      </section>
+    )}
+  </main>
+
+  <style>
+    .about-page {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 8rem;
+    }
+
+    .primary-zone {
+      margin-bottom: 3rem;
+    }
+
+    .primary-zone h1 {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.01em;
+    }
+
+    .bio p {
+      font-size: 1.125rem;
+      color: var(--color-text);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .bio p:last-child {
+      margin-bottom: 0;
+    }
+
+    .secondary-zone {
+      padding-top: 3rem;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .secondary-zone h2 {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .resume-link a {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.2s ease;
+    }
+
+    .resume-link a:hover {
+      color: var(--color-text);
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .social-links a {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.2s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--color-text);
+    }
+
+    .separator {
+      color: var(--color-text-muted);
+      user-select: none;
+    }
+
+    @media (max-width: 640px) {
+      .about-page {
+        padding: 4rem 1rem 6rem;
+      }
+
+      .primary-zone {
+        margin-bottom: 4rem;
+      }
+
+      .primary-zone h1 {
+        font-size: 1rem;
+      }
+
+      .bio p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</BaseLayout>

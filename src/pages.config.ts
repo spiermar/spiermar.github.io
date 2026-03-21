@@ -119,6 +119,15 @@ export const pagesConfig = {
   },
 
   /**
+   * About page (/about)
+   */
+  about: {
+    title: 'About - Martin Spier',
+    description: 'Engineering leader working at the intersection of AI, platform engineering, performance, reliability, and developer experience.',
+    heading: 'About',
+  },
+  
+  /**
    * Contact page (/contact)
    */
   contact: {
