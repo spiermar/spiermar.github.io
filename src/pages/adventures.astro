@@ -26,6 +26,7 @@ import AdventureCard from '../components/AdventureCard.astro';
 import PageStats from '../components/PageStats.astro';
 import { getCollection } from 'astro:content';
 import { pagesConfig } from '../pages.config';
+import { siteConfig } from '../config';
 
 /**
  * Queries all adventure entries from the content collection
@@ -104,6 +105,19 @@ const plannedCount = sortedAdventures.filter(a => a.data.status === 'planned').l
         <cite>Anthony Bourdain, No Reservations: Around the World on an Empty Stomach</cite>
       </blockquote>
       <PageStats text={`${totalAdventures} adventures · ${plannedCount} planned`} />
+
+      {siteConfig.social.instagram && (
+        <div class="instagram-cta">
+          <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" class="instagram-link">
+            <svg class="instagram-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            <span>Follow my adventures on Instagram</span>
+          </a>
+        </div>
+      )}
     </header>
 
     {years.length > 0 ? (
@@ -153,6 +167,37 @@ const plannedCount = sortedAdventures.filter(a => a.data.status === 'planned').l
       font-style: normal;
       font-size: 0.875rem;
       color: var(--color-text-muted);
+    }
+
+    .instagram-cta {
+      margin-top: 1.5rem;
+      padding: 1rem 1.25rem;
+      background-color: var(--color-surface);
+      border-radius: 0.5rem;
+      border: 1px solid var(--color-border);
+    }
+
+    .instagram-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      text-decoration: none;
+      color: var(--color-text);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .instagram-link:hover {
+      color: var(--color-primary);
+    }
+
+    .instagram-link:hover .instagram-icon {
+      transform: scale(1.1);
+    }
+
+    .instagram-icon {
+      transition: transform 0.2s ease;
     }
 
     .adventures-by-year {
