@@ -145,8 +145,11 @@ const recentTalks = allTalks
               {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short' }).format(talk.data.date)}
             </span>
             <span class="post-type">{talk.data.type}</span>
-            <span class="post-title">{talk.data.title}</span>
-            <span class="post-event">{talk.data.event}</span>
+            <span class="post-title">
+              {talk.data.title}
+              <span class="post-separator"> · </span>
+              <span class="post-event">{talk.data.event}</span>
+            </span>
             {talk.data.video && (
               <a href={talk.data.video} class="btn-video" target="_blank" rel="noopener noreferrer">Video</a>
             )}
@@ -372,6 +375,10 @@ const recentTalks = allTalks
       line-height: 1.4;
     }
 
+    .post-separator {
+      color: var(--color-text-muted);
+    }
+
     .view-all-link {
       display: inline-block;
       font-size: 0.9375rem;
@@ -396,10 +403,8 @@ const recentTalks = allTalks
     }
 
     .post-event {
-      flex-shrink: 0;
-      font-size: 0.8125rem;
+      font-size: 0.9375rem;
       color: var(--color-text-muted);
-      margin-left: auto;
     }
 
     .post-type {
@@ -517,11 +522,6 @@ const recentTalks = allTalks
       .recent-post {
         flex-wrap: wrap;
         gap: 0.5rem;
-      }
-
-      .post-event {
-        margin-left: 0;
-        flex-basis: 100%;
       }
 
       .cta-buttons {
