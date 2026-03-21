@@ -57,6 +57,12 @@ const allArticles = await getCollection('writing', ({ data }) => {
 const recentArticles = allArticles
   .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
   .slice(0, 5);
+
+const allTalks = await getCollection('speaking');
+
+const recentTalks = allTalks
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 5);
 ---
 
 <BaseLayout>
@@ -128,6 +134,22 @@ const recentArticles = allArticles
         ))}
       </div>
       <a href="/writing" class="view-all-link">View all articles →</a>
+    </section>
+
+    <section class="recent-speaking">
+      <h2>Recent Talks & Podcasts</h2>
+      <div class="recent-posts-list">
+        {recentTalks.map((talk) => (
+          <a href={`/speaking/${talk.id}`} class="recent-post">
+            <span class="post-date">
+              {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short' }).format(talk.data.date)}
+            </span>
+            <span class="post-title">{talk.data.title}</span>
+            <span class="post-event">{talk.data.event}</span>
+          </a>
+        ))}
+      </div>
+      <a href="/speaking" class="view-all-link">View all talks →</a>
     </section>
 
     <!-- What I Think About -->
@@ -364,6 +386,24 @@ const recentArticles = allArticles
       color: var(--color-text);
     }
 
+    .recent-speaking {
+      margin-bottom: 5rem;
+    }
+
+    .recent-speaking h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .post-event {
+      flex-shrink: 0;
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      margin-left: auto;
+    }
+
     .thinking {
       margin-bottom: 5rem;
     }
@@ -450,6 +490,10 @@ const recentArticles = allArticles
       .recent-post {
         flex-direction: column;
         gap: 0.25rem;
+      }
+
+      .post-event {
+        margin-left: 0;
       }
 
       .cta-buttons {
