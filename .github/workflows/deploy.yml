@@ -38,6 +38,7 @@ jobs:
           SOCIAL_GITHUB: 'https://github.com/spiermar'
           SOCIAL_LINKEDIN: 'https://linkedin.com/in/martin.spier'
           SOCIAL_TWITTER: 'https://x.com/martin_spier'
+          SOCIAL_INSTAGRAM: 'https://www.instagram.com/martin.spier'
           SITE_TITLE: 'Martin Spier'
           SITE_DESCRIPTION: 'Engineering Leader focused on AI and Cloud Infrastructure, Performance and Reliability, and Platform Engineering.'
 
