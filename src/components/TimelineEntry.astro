@@ -38,6 +38,18 @@
  * >
  *   <p>Detailed information about the role and achievements...</p>
  * </TimelineEntry>
+ * 
+ * <!-- Award entry with external link -->
+ * <TimelineEntry
+ *   date={new Date('2023-04-10')}
+ *   title="Best Paper Award"
+ *   type="award"
+ *   description="Recognized for outstanding technical contribution"
+ *   link="https://example.com/award"
+ *   hasContent={true}
+ * >
+ *   <p>Details about the award...</p>
+ * </TimelineEntry>
  * ```
  */
 
@@ -49,10 +61,13 @@ interface Props {
   title: string;
   
   /** Type of entry (determines color coding and badge label) */
-  type: 'milestone' | 'learning' | 'transition';
+  type: 'milestone' | 'learning' | 'transition' | 'award';
   
   /** Brief description of the event or achievement */
   description: string;
+  
+  /** Optional external link (for awards and other entries) */
+  link?: string;
   
   /** Optional array of skills or technologies associated with this entry */
   skills?: string[];
@@ -61,7 +76,7 @@ interface Props {
   hasContent?: boolean;
 }
 
-const { date, title, type, description, skills, hasContent = false } = Astro.props;
+const { date, title, type, description, link, skills, hasContent = false } = Astro.props;
 
 /**
  * Formats the date to show month and year only
@@ -86,7 +101,8 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
 const typeLabels = {
   milestone: 'Milestone',
   learning: 'Learning',
-  transition: 'Transition'
+  transition: 'Transition',
+  award: 'Award'
 };
 
 /**
@@ -116,6 +132,17 @@ const entryId = `journey-${date.getTime()}`;
     <h3 class="timeline-title">{title}</h3>
     
     <p class="timeline-description">{description}</p>
+    
+    {link && (
+      <a href={link} target="_blank" rel="noopener noreferrer" class="timeline-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+        <span>View details</span>
+      </a>
+    )}
     
     {skills && skills.length > 0 && (
       <div class="timeline-skills">
@@ -195,6 +222,10 @@ const entryId = `journey-${date.getTime()}`;
     background: #f59e0b;
   }
 
+  .timeline-dot[data-type="award"] {
+    background: #8b5cf6;
+  }
+
   .timeline-line {
     width: 2px;
     flex-grow: 1;
@@ -245,6 +276,11 @@ const entryId = `journey-${date.getTime()}`;
     border-color: #f59e0b;
   }
 
+  .timeline-type[data-type="award"] {
+    color: #8b5cf6;
+    border-color: #8b5cf6;
+  }
+
   .timeline-title {
     font-size: 1.25rem;
     font-weight: 600;
@@ -258,6 +294,26 @@ const entryId = `journey-${date.getTime()}`;
     line-height: 1.75;
     color: var(--color-text);
     margin-bottom: 1rem;
+  }
+
+  .timeline-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    transition: opacity 0.2s ease;
+  }
+
+  .timeline-link:hover {
+    opacity: 0.8;
+  }
+
+  .timeline-link svg {
+    flex-shrink: 0;
   }
 
   .timeline-skills {

@@ -163,12 +163,13 @@ const decisionsCollection = defineCollection({
  * Journey Timeline Collection
  * 
  * Career growth and learning progression timeline with milestones,
- * learning experiences, and career transitions.
+ * learning experiences, career transitions, and awards.
  * 
  * Features:
- * - Three entry types (milestone, learning, transition)
+ * - Four entry types (milestone, learning, transition, award)
  * - Skills/technologies per entry
  * - Optional expandable content
+ * - Optional external links for awards
  */
 const journeyCollection = defineCollection({
   loader: glob({ pattern: '**/*.mdx', base: './src/content/journey' }),
@@ -180,10 +181,13 @@ const journeyCollection = defineCollection({
     title: z.string(),
     
     /** Type of timeline entry */
-    type: z.enum(['milestone', 'learning', 'transition']),
+    type: z.enum(['milestone', 'learning', 'transition', 'award']),
     
     /** Brief description */
     description: z.string(),
+    
+    /** External link (optional, for awards and other entries) */
+    link: z.string().url().optional(),
     
     /** Skills or technologies associated with this entry */
     skills: z.array(z.string()).optional(),

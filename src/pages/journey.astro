@@ -19,6 +19,7 @@
  * - milestone: Major achievements and launches
  * - learning: Education and skill development
  * - transition: Job changes and career moves
+ * - award: Recognition and honors
  * 
  * Route: /journey
  * 
@@ -91,6 +92,7 @@ const entriesWithContent = await Promise.all(
             title={entry.data.title}
             type={entry.data.type}
             description={entry.data.description}
+            link={entry.data.link}
             skills={entry.data.skills}
             hasContent={hasContent}
           >
