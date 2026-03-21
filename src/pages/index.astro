@@ -140,13 +140,17 @@ const recentTalks = allTalks
       <h2>Recent Talks & Podcasts</h2>
       <div class="recent-posts-list">
         {recentTalks.map((talk) => (
-          <a href={`/speaking/${talk.id}`} class="recent-post">
+          <div class="recent-post">
             <span class="post-date">
               {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short' }).format(talk.data.date)}
             </span>
+            <span class="post-type">{talk.data.type}</span>
             <span class="post-title">{talk.data.title}</span>
             <span class="post-event">{talk.data.event}</span>
-          </a>
+            {talk.data.video && (
+              <a href={talk.data.video} class="btn-video" target="_blank" rel="noopener noreferrer">Video</a>
+            )}
+          </div>
         ))}
       </div>
       <a href="/speaking" class="view-all-link">View all talks →</a>
@@ -348,16 +352,10 @@ const recentTalks = allTalks
 
     .recent-post {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       gap: 1rem;
       padding: 0.75rem 0;
       border-bottom: 1px solid var(--color-border);
-      text-decoration: none;
-      transition: opacity 0.2s ease;
-    }
-
-    .recent-post:hover {
-      opacity: 0.7;
     }
 
     .post-date {
@@ -402,6 +400,35 @@ const recentTalks = allTalks
       font-size: 0.8125rem;
       color: var(--color-text-muted);
       margin-left: auto;
+    }
+
+    .post-type {
+      flex-shrink: 0;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+      background: var(--color-bg-secondary);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .btn-video {
+      flex-shrink: 0;
+      display: inline-block;
+      padding: 0.375rem 0.75rem;
+      background: var(--color-text);
+      color: var(--color-bg);
+      font-weight: 500;
+      font-size: 0.75rem;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn-video:hover {
+      opacity: 0.85;
     }
 
     .thinking {
@@ -488,12 +515,13 @@ const recentTalks = allTalks
       }
 
       .recent-post {
-        flex-direction: column;
-        gap: 0.25rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
       }
 
       .post-event {
         margin-left: 0;
+        flex-basis: 100%;
       }
 
       .cta-buttons {
