@@ -17,16 +17,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SEO from '../components/SEO.astro';
 import { siteConfig } from '../config';
 import { pagesConfig } from '../pages.config';
+import { getSocialLinks } from '../utils/socialLinks';
 
-const socialLinks = [
-  { platform: 'Resume', url: 'https://github.com/spiermar/resume.md' },
-  ...Object.entries(siteConfig.social)
-    .filter(([_, url]) => url)
-    .map(([platform, url]) => ({
-      platform: platform.charAt(0).toUpperCase() + platform.slice(1),
-      url
-    }))
-];
+const socialLinks = getSocialLinks(
+  siteConfig.social,
+  [{ platform: 'Resume', url: 'https://github.com/spiermar/resume.md' }]
+);
 ---
 
 <BaseLayout>
