@@ -55,7 +55,7 @@ export const pagesConfig = {
    */
   home: {
     title: 'Home',
-    description: 'Engineering leader specializing in system architecture, technical decision-making, and delivering measurable business impact.',
+    description: 'Engineering leader working at the intersection of AI infrastructure, platform, and performance engineering.',
   },
   
   /**
@@ -123,7 +123,7 @@ export const pagesConfig = {
    */
   about: {
     title: 'About - Martin Spier',
-    description: 'Engineering leader working at the intersection of AI, platform engineering, performance, reliability, and developer experience.',
+    description: 'Engineering leader working at the intersection of AI infrastructure, platform, and performance engineering.',
     heading: 'About',
   },
   
