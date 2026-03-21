@@ -17,20 +17,10 @@
  * ```
  */
 import { siteConfig } from '../config';
+import SocialIcon from './SocialIcon.astro';
 
-/**
- * Gets the current year for copyright display
- */
 const currentYear = new Date().getFullYear();
 
-/**
- * Filters and formats social links from site configuration
- * 
- * Only includes platforms that have a URL configured (non-empty values).
- * Capitalizes platform names for display (e.g., "github" becomes "Github").
- * 
- * @returns Array of social link objects with platform name and URL
- */
 const socialLinks = Object.entries(siteConfig.social)
   .filter(([_, url]) => url)
   .map(([platform, url]) => ({
@@ -48,6 +38,7 @@ const socialLinks = Object.entries(siteConfig.social)
         {socialLinks.map((link, index) => (
           <>
             <a href={link.url} target="_blank" rel="noopener noreferrer">
+              <SocialIcon platform={link.platform} size={14} />
               {link.platform}
             </a>
             {index < socialLinks.length - 1 && <span class="separator">·</span>}
@@ -86,6 +77,9 @@ const socialLinks = Object.entries(siteConfig.social)
   }
 
   .footer-social a {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
     font-size: 0.8125rem;
     color: var(--color-text-muted);
     text-decoration: none;
