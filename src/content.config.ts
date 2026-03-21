@@ -318,10 +318,13 @@ const adventuresCollection = defineCollection({
     images: z.array(z.string()).optional(),
 
     /** Category (optional) */
-    category: z.enum(['hiking', 'climbing', 'backpacking', 'travel', 'overlanding', 'adventure-travel']).optional(),
+    category: z.enum(['hiking', 'climbing', 'backpacking', 'travel', 'overlanding', 'adventure-travel', 'motorcycle-adventure']).optional(),
 
     /** Whether to feature this adventure */
     featured: z.boolean().default(false),
+
+    /** Cover image aspect ratio (defaults to "landscape") */
+    imageRatio: z.enum(['landscape', 'square']).default('landscape'),
   }),
 });
 

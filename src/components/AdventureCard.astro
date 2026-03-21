@@ -28,6 +28,9 @@ interface Props {
 
   /** URL slug for linking to detail page */
   slug: string;
+
+  /** Image aspect ratio (optional: "landscape" | "square") */
+  imageRatio?: 'landscape' | 'square';
 }
 
 const {
@@ -36,7 +39,8 @@ const {
   location,
   status,
   coverImage,
-  slug
+  slug,
+  imageRatio = 'landscape'
 } = Astro.props;
 
 /**
@@ -56,7 +60,7 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
     </span>
   )}
 
-  <div class="adventure-image">
+  <div class="adventure-image" data-ratio={imageRatio}>
     <img src={coverImage} alt={title} />
   </div>
 
@@ -107,6 +111,10 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
     aspect-ratio: 16 / 9;
     overflow: hidden;
     background: var(--color-bg);
+  }
+
+  .adventure-image[data-ratio="square"] {
+    aspect-ratio: 1 / 1;
   }
 
   .adventure-image img {
