@@ -318,7 +318,7 @@ const adventuresCollection = defineCollection({
     images: z.array(z.string().url()).optional(),
 
     /** Category (optional) */
-    category: z.enum(['hiking', 'climbing', 'backpacking', 'travel']).optional(),
+    category: z.enum(['hiking', 'climbing', 'backpacking', 'travel', 'overlanding', 'adventure-travel']).optional(),
 
     /** Whether to feature this adventure */
     featured: z.boolean().default(false),

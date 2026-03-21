@@ -115,7 +115,7 @@ export const pagesConfig = {
     title: 'Adventures - Travel & Exploration',
     description: 'A collection of hiking, climbing, and travel adventures from around the world.',
     heading: 'Adventures',
-    intro: 'A personal collection of outdoor adventures and travels.',
+    intro: 'I love to travel, adventure, not tourism. Getting to know new places, new cultures and new people are the most fulfilling things one can experience in life. Overlanding, backpacking and adventure traveling are the best ways of getting to know new places.',
   },
 
   /**
