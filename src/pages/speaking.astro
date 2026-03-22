@@ -98,6 +98,15 @@ const conferenceCount = sortedTalks.filter(t => t.data.type === 'conference').le
   <main class="page-container">
     <header class="page-header">
       <h1 class="page-title">{pagesConfig.speaking.heading}</h1>
+      
+      <div class="speaking-image-container">
+        <img 
+          src="/images/speaking.jpg" 
+          alt="Martin Spier speaking at a conference" 
+          class="speaking-image"
+        />
+      </div>
+      
       <p class="page-intro">
         {pagesConfig.speaking.intro}
       </p>
@@ -139,6 +148,31 @@ const conferenceCount = sortedTalks.filter(t => t.data.type === 'conference').le
   </main>
 
   <style>
+    .speaking-image-container {
+      margin: 2rem 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .speaking-image {
+      width: 100%;
+      max-width: 640px;
+      height: auto;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 
+        0 4px 20px -4px rgba(0, 0, 0, 0.15),
+        0 0 0 1px var(--color-border);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .speaking-image:hover {
+      transform: translateY(-2px);
+      box-shadow: 
+        0 8px 30px -4px rgba(0, 0, 0, 0.2),
+        0 0 0 1px var(--color-border);
+    }
+
     .talks-by-year {
       display: flex;
       flex-direction: column;
