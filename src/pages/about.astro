@@ -34,24 +34,21 @@ const socialLinks = getSocialLinks(
     type="website"
   />
 
-  <main class="about-page">
-    <section class="primary-zone">
-      <h1>{pagesConfig.about.heading}</h1>
+  <main class="page-container">
+    <header class="page-header">
+      <h1 class="page-title">{pagesConfig.about.heading}</h1>
+      <p class="page-intro">
+        I'm Martin Spier — an engineering leader focused on AI and cloud infrastructure, performance and reliabilty, and platform engineering. I recently moved to OpenAI, where I'm leading ChatGPT Performance. Before that, I was VP of Engineering at Parasail, focused on AI inference, and earlier spent over eight years at Netflix leading large-scale performance engineering for the global streaming service. My work has consistently centered on making complex systems faster, more reliable, and easier for engineers to build on.
+      </p>
       
-      <div class="bio">
-        <p>
-          I'm Martin Spier — an engineering leader focused on AI and cloud infrastructure, performance and reliabilty, and platform engineering. I recently moved to OpenAI, where I'm leading ChatGPT Performance. Before that, I was VP of Engineering at Parasail, focused on AI inference, and earlier spent over eight years at Netflix leading large-scale performance engineering for the global streaming service. My work has consistently centered on making complex systems faster, more reliable, and easier for engineers to build on.
-        </p>
-        
-        <p>
-          I'm especially interested in the practical side of AI: the infrastructure that makes it usable, the platform layers that make it scalable, and the workflows that make teams more effective. Lately, that includes agent-driven development, autonomous workflows, and general-purpose AI agents for productivity — alongside the platform engineering basics I've always cared about: abstraction layers, paved roads, maintainability, operational readiness, and measurable productivity.
-        </p>
-        
-        <p>
-          My technical background is in performance engineering, and that perspective continues to shape how I think about systems, teams, and products. I've built open-source and internal tools spanning profiling, flame graphs, observability, and large-scale distributed systems, and I continue to invest, advise, and stay close to the technical details. I like building organizations and platforms that reduce friction, increase leverage, and help great engineers move faster with confidence.
-        </p>
-      </div>
-    </section>
+      <p class="page-intro">
+        I'm especially interested in the practical side of AI: the infrastructure that makes it usable, the platform layers that make it scalable, and the workflows that make teams more effective. Lately, that includes agent-driven development, autonomous workflows, and general-purpose AI agents for productivity — alongside the platform engineering basics I've always cared about: abstraction layers, paved roads, maintainability, operational readiness, and measurable productivity.
+      </p>
+      
+      <p class="page-intro">
+        My technical background is in performance engineering, and that perspective continues to shape how I think about systems, teams, and products. I've built open-source and internal tools spanning profiling, flame graphs, observability, and large-scale distributed systems, and I continue to invest, advise, and stay close to the technical details. I like building organizations and platforms that reduce friction, increase leverage, and help great engineers move faster with confidence.
+      </p>
+    </header>
 
     {socialLinks.length > 0 && (
       <section class="secondary-zone">
@@ -72,32 +69,11 @@ const socialLinks = getSocialLinks(
   </main>
 
   <style>
-    .about-page {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem 8rem;
-    }
-
-    .primary-zone {
-      margin-bottom: 3rem;
-    }
-
-    .primary-zone h1 {
-      font-size: 1.125rem;
-      font-weight: 500;
-      color: var(--color-text-muted);
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.01em;
-    }
-
-    .bio p {
-      font-size: 1.125rem;
-      color: var(--color-text);
-      line-height: 1.75;
+    .page-intro {
       margin-bottom: 1.5rem;
     }
 
-    .bio p:last-child {
+    .page-intro:last-of-type {
       margin-bottom: 0;
     }
 
@@ -139,24 +115,6 @@ const socialLinks = getSocialLinks(
     .separator {
       color: var(--color-text-muted);
       user-select: none;
-    }
-
-    @media (max-width: 640px) {
-      .about-page {
-        padding: 4rem 1rem 6rem;
-      }
-
-      .primary-zone {
-        margin-bottom: 4rem;
-      }
-
-      .primary-zone h1 {
-        font-size: 1rem;
-      }
-
-      .bio p {
-        font-size: 1rem;
-      }
     }
   </style>
 </BaseLayout>
