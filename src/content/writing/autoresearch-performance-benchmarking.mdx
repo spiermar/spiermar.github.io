@@ -1,0 +1,43 @@
+---
+title: "Using Autoresearch to Optimize Performance"
+publishDate: 2022-04-03
+description: "Draft post"
+draft: true
+---
+
+- thinking about using the autoresearch loop to improve the performance of systems
+- give a set of instructions to an agent on how to execute a test and measure the outcome
+- what a better or worse outcome looks like
+- point to what it can change to improve the outcome
+- make changes, test, analyze outcome
+- better, keep. worse, discard
+- the tricky part is properly testing, or benchmarking
+- the benchmark needs to be accuarate for the results to be valid
+- bechmarking is not simple
+- microbenchmark frameworks might be an option
+- that's easy and quick to run
+- might take some time to setup all the benchmarks
+- but it works
+- but just for simple algo improvements
+- what about larger distributed systems?
+- how to properly benchmark them?
+- what about all the different scenario options? 
+- different load levels, data, ramping up, all the different variables that make performance testing complex
+- performance testing fell out of favor in the past
+- exactly because it takes a lot of effort and time to run proper performance tests
+- that most of the time results were not that realistic in the first place
+- systems just got too complex to be able to realistically reproduce a production behavior, or behaviors
+- it was not worth it
+- faster techniques, that didn't require setting up load tests, data, environments, started being used to validate performance
+- maybe that's an alternative for autoresearch
+- create a tool to orchestrate test deployments in production, in a canary analysis fashion
+- have the model use that to build, depoy, test and collect data about its tests
+- use that as the loop for autoresearch
+- instead of relying on local tests
+- maybe even capture profiles and detailed metrics during the canary
+- feed that to the model to improve the brainstorming of new improvement ideas
+- just need to be careful not to afect real users
+- maybe mirroring traffic
+- LLM benchmarks are a little more isolated
+- maybe autoresearch can be used easily wiht LLM benchmarks to improve inference speed
+- for the distributed systems version, we could even run multiple tests in parallel in production

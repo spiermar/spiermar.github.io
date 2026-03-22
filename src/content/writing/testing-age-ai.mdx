@@ -1,0 +1,48 @@
+---
+title: "Testing in the Age of AI"
+publishDate: 2026-03-22
+description: "Draft post"
+draft: true
+---
+
+- testing fell out of favor over the years
+- not just manual testing, but even complicated automated UI tests
+- even unit tests were only seen as a hurdle
+- but now with AI agent driven development, the agent needs a feedback loop
+- it needs a way to validate the changes it made
+- if you don't create automated tests, the loop becomes much slower
+- where you manually have to validate and ask the agent to fix the issue
+- multiple times sometimes
+- "pls fix this"
+- so testing became a critical part of an effective AI agent driven development workflow
+- good test coverage, different types of test, will all help slowing down the loop with a manual verification
+- its not to guarantee it will work in production
+- but to avoid the back end forth between agent and human
+- other testing skills are becoming important
+- like optimizing tests to run faster
+- combine tests, skip unecessary tests, all the techniques
+- faster tests, faster loop
+- the one point of attention is that you shouldn't rely purely on tests to guarantee that something will work in production
+- environments are different
+- data is different
+- corner cases
+- you can never reproduce all possible combinations of situations a system must handle
+- and this becomes even a bigger issue in larger and complex systems
+- the more complex the system is, the more combinations of factors that generate a failure
+- you also don't want to add a human verification loop
+- that's alo not helpful, as we know, pre-production tests can't catch everything
+- you also need to balance the test coverage and test execution speed
+- you don't want tests that will run for hours
+- finding that balance is key
+- for proper reliability, we have to rely on the same techniques we're been investing for the past 10 years
+- not trying to validate everyting in a pre-production environment
+- but making it safer to test in a production environment
+- canary releases, automated canary analysis
+- blue green deploys
+- feature flags
+- ideally in a fully automated way
+- also keeping systems simplest as possible, so tests can catch more issues, speeding up the process
+- isolation is important too
+- invest in a proper architecture too
+- an architecture that is resilient to failure
+- anti-fragile, assume everything will break
