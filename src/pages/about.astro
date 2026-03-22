@@ -37,6 +37,15 @@ const socialLinks = getSocialLinks(
   <main class="page-container">
     <header class="page-header">
       <h1 class="page-title">{pagesConfig.about.heading}</h1>
+      
+      <div class="profile-image-container">
+        <img 
+          src="/images/profile.jpg" 
+          alt="Martin Spier" 
+          class="profile-image"
+        />
+      </div>
+      
       <p class="page-intro">
         I'm Martin Spier — an engineering leader focused on AI and cloud infrastructure, performance and reliabilty, and platform engineering. I recently moved to OpenAI, where I'm leading ChatGPT Performance. Before that, I was VP of Engineering at Parasail, focused on AI inference, and earlier spent over eight years at Netflix leading large-scale performance engineering for the global streaming service. My work has consistently centered on making complex systems faster, more reliable, and easier for engineers to build on.
       </p>
@@ -69,6 +78,32 @@ const socialLinks = getSocialLinks(
   </main>
 
   <style>
+    .profile-image-container {
+      margin: 2rem 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-image {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 
+        0 0 0 4px var(--color-bg),
+        0 0 0 6px var(--color-border),
+        0 8px 24px -8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .profile-image:hover {
+      transform: scale(1.03);
+      box-shadow: 
+        0 0 0 4px var(--color-bg),
+        0 0 0 6px var(--color-accent, var(--color-border)),
+        0 12px 32px -8px rgba(0, 0, 0, 0.25);
+    }
+
     .page-intro {
       margin-bottom: 1.5rem;
     }
