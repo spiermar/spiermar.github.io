@@ -105,7 +105,7 @@ export const pagesConfig = {
     title: 'Speaking - Talks & Presentations',
     description: 'Conference talks, meetup presentations, podcast appearances, and workshops on software engineering, architecture, and technical leadership.',
     heading: 'Speaking',
-    intro: 'I regularly speak at conferences, meetups, and on podcasts. I\'ve presented to groups ranging from intimate gatherings of six to large audiences of 6,000, and most of my talks focus on performance engineering, technical leadership, software architecture, engineering practices, engineering management, engineering culture, innovation, and technology.  Here\'s a collection of my talks and presentations.',
+    intro: 'I regularly speak at conferences, meetups, and on podcasts. I\'ve presented to groups ranging from intimate gatherings of six to large audiences of 6,000, and most of my talks focus on performance engineering, technical leadership, software architecture, engineering practices, engineering management and culture, innovation, and technology.  Here\'s a collection of my talks and presentations.',
   },
 
   /**
