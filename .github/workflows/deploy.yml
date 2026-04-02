@@ -31,7 +31,7 @@ jobs:
           SITE_URL: 'https://spiermar.github.io'
           SITE_LANGUAGE: 'en'
           SITE_AUTHOR_NAME: 'Martin Spier'
-          SITE_AUTHOR_TITLE: 'Director, ChatGPT Performance @ OpenAI.'
+          SITE_AUTHOR_TITLE: 'ChatGPT Performance @ OpenAI.'
           SITE_AUTHOR_BIO: 'Engineering Leader focused on AI and Cloud Infrastructure, Performance and Reliability, and Platform Engineering.'
           SITE_AUTHOR_EMAIL: 'hello@martinspier.io'
           SITE_AUTHOR_LOCATION: 'Los Gatos, CA'
