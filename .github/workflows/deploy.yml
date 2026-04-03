@@ -32,7 +32,7 @@ jobs:
           SITE_LANGUAGE: 'en'
           SITE_AUTHOR_NAME: 'Martin Spier'
           SITE_AUTHOR_TITLE: 'ChatGPT Performance @ OpenAI.'
-          SITE_AUTHOR_BIO: 'Engineering Leader focused on AI and Cloud Infrastructure, Platform Engineering, Performance and Reliability.'
+          SITE_AUTHOR_BIO: 'Engineering Leader | AI and Cloud Infrastructure, Platform Engineering, Performance and Reliability'
           SITE_AUTHOR_EMAIL: 'hello@martinspier.io'
           SITE_AUTHOR_LOCATION: 'Los Gatos, CA'
           SOCIAL_GITHUB: 'https://github.com/spiermar'
@@ -40,7 +40,7 @@ jobs:
           SOCIAL_TWITTER: 'https://x.com/martin_spier'
           SOCIAL_INSTAGRAM: 'https://www.instagram.com/martin.spier'
           SITE_TITLE: 'Martin Spier'
-          SITE_DESCRIPTION: 'Engineering Leader focused on AI and Cloud Infrastructure, Platform Engineering, Performance and Reliability.'
+          SITE_DESCRIPTION: 'Engineering Leader | AI and Cloud Infrastructure, Platform Engineering, Performance and Reliability'
           FORMSPREE_FORM_ID: 'https://formspree.io/f/meqpdppq'
 
   deploy:

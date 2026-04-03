@@ -55,7 +55,7 @@ export const pagesConfig = {
    */
   home: {
     title: 'Home',
-    description: 'Engineering Leader focused on AI and Cloud Infrastructure, Platform Engineering, Performance and Reliability.',
+    description: 'Engineering Leader | AI and Cloud Infrastructure, Platform Engineering, Performance and Reliability',
   },
   
   /**
@@ -123,7 +123,7 @@ export const pagesConfig = {
    */
   about: {
     title: 'About - Martin Spier',
-    description: 'Engineering Leader focused on AI and Cloud Infrastructure, Platform Engineering, Performance and Reliability.',
+    description: 'Engineering Leader | AI and Cloud Infrastructure, Platform Engineering, Performance and Reliability',
     heading: 'About',
   },
   
