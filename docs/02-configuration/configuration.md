@@ -14,6 +14,7 @@ Copy `.env.example` to `.env` and configure:
 | `SITE_LANGUAGE` | No | `en` | ISO 639-1 code (e.g., `en`, `id`, `de`) |
 | `SITE_TITLE` | No | `Professional Portfolio` | Site title for SEO |
 | `SITE_DESCRIPTION` | No | - | Default meta description |
+| `PUBLIC_GA_MEASUREMENT_ID` | No | - | Google Analytics measurement ID for site-wide analytics |
 
 ### Author Information
 
@@ -53,7 +54,15 @@ SITE_AUTHOR_LOCATION="San Francisco, CA"
 SOCIAL_GITHUB=https://github.com/johndoe
 SOCIAL_LINKEDIN=https://linkedin.com/in/johndoe
 SOCIAL_TWITTER=https://x.com/johndoe
+
+PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 ```
+
+## Google Analytics Setup
+
+Set `PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX` to enable Google Analytics across the site.
+
+Leave `PUBLIC_GA_MEASUREMENT_ID` empty to disable analytics and omit the Google Analytics scripts from the rendered pages.
 
 ## Navigation
 
