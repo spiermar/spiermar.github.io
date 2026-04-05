@@ -42,7 +42,7 @@ jobs:
           SITE_TITLE: 'Martin Spier'
           SITE_DESCRIPTION: 'Engineering Leader | AI and Cloud Infrastructure, Platform Engineering, Performance and Reliability'
           FORMSPREE_FORM_ID: 'https://formspree.io/f/meqpdppq'
-
+          PUBLIC_GA_MEASUREMENT_ID: 'G-N8JFTK94N8'
   deploy:
     needs: build
     runs-on: ubuntu-latest
