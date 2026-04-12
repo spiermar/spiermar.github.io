@@ -1,0 +1,32 @@
+---
+title: "Dealing with performance regressions in the age of agentic AI development"
+publishDate: 2026-04-11T00:00:00-05:00
+description: "Agentic AI made developing new code and features extremely fast, and with that, more performance regressions. How can performance engineering can evolve to deal with this?"
+draft: true
+---
+
+- when you add features and logic to an application, you're generally consuming more resources per request
+- so every new thing that is added, introduced some form of performance regression
+- most are negligible and go unoticed
+- some are significant and need to be dealt with immediately
+- long term regression is a problem too, and the compounding effect of lots of small regressions
+- performance engineering was always an opposite force to this regression force
+- new features and logic are added, because they help the product, but make things regress
+- performance engineering finds optimizations, so performance is acceptable, systems can continue to scale and remain efficient
+- this balance is key
+- you add features and logic and don't invest in performance engineering, things will get slow and unusable soon enough
+- you invest too much in performance and you're prematurely optimizing and wasting cycles on things that don't add value to users
+- if everything is balanced, teams can continue adding features and you find enough optimizations to keep performance flat or may improve it slightly
+- the problem is that now with agentic AI development, we're shipping code a lot faster
+- I will not get into the argument of the quality of the code, but just the basic notion of adding logic
+- with a lot more logic and features being added, the equation is not balanced anymore
+- regressions are more frequent
+- the compounding effect is faster
+- and this is only acceleating
+- we need to find ways to find performance optimizations faster
+- shift left when possible
+- automated performance AI agents
+- microbenchmarking and regression analysis during CI
+- performance validation during canary analysis and automated rollback
+- automated profile analysis
+- continuous profiling
