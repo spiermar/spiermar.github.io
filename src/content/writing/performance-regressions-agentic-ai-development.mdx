@@ -1,32 +1,162 @@
 ---
-title: "Dealing with performance regressions in the age of agentic AI development"
+title: "Performance Regressions in the Age of Agentic AI Development"
 publishDate: 2026-04-11T00:00:00-05:00
-description: "Agentic AI made developing new code and features extremely fast, and with that, more performance regressions. How can performance engineering can evolve to deal with this?"
+description: "Agentic development can increase the rate of performance regressions because teams can ship more logic faster. Performance engineering has to move from occasional cleanup to faster, automated feedback loops."
+tags:
+  - performance-engineering
+  - agentic-ai
+  - continuous-profiling
+  - automated-testing
 draft: true
 ---
 
-- when you add features and logic to an application, you're generally consuming more resources per request
-- so every new thing that is added, introduced some form of performance regression
-- most are negligible and go unoticed
-- some are significant and need to be dealt with immediately
-- long term regression is a problem too, and the compounding effect of lots of small regressions
-- performance engineering was always an opposite force to this regression force
-- new features and logic are added, because they help the product, but make things regress
-- performance engineering finds optimizations, so performance is acceptable, systems can continue to scale and remain efficient
-- this balance is key
-- you add features and logic and don't invest in performance engineering, things will get slow and unusable soon enough
-- you invest too much in performance and you're prematurely optimizing and wasting cycles on things that don't add value to users
-- if everything is balanced, teams can continue adding features and you find enough optimizations to keep performance flat or may improve it slightly
-- the problem is that now with agentic AI development, we're shipping code a lot faster
-- I will not get into the argument of the quality of the code, but just the basic notion of adding logic
-- with a lot more logic and features being added, the equation is not balanced anymore
-- regressions are more frequent
-- the compounding effect is faster
-- and this is only acceleating
-- we need to find ways to find performance optimizations faster
-- shift left when possible
-- automated performance AI agents
-- microbenchmarking and regression analysis during CI
-- performance validation during canary analysis and automated rollback
-- automated profile analysis
-- continuous profiling
+Agentic AI development does not change a basic rule of software: every new feature adds work. Some of that work is valuable. Some of it is necessary. Some of it is accidental. But almost every new branch of logic, data fetch, validation step, abstraction layer, prompt call, or dependency creates another opportunity to spend more CPU, memory, network, or wall-clock time per request.
+
+Most of those regressions are too small to notice on their own. A few are obvious enough that they page someone immediately. The harder problem sits between those extremes: the compounding effect of small regressions that arrive faster than the organization can understand and remove them.
+
+Agentic development makes this more important because it can increase the rate at which teams add logic. Even if the quality of each change stays acceptable, the performance equation changes when more changes land in the same amount of time.
+
+## More features usually mean more work per request
+
+When a product gains behavior, the system usually has to do more things. It may check more permissions, load more related records, call another service, build a richer response, evaluate another model, emit more telemetry, or run through a more complicated UI path.
+
+That is not automatically bad. The point of product development is to add useful behavior. A feature that adds 10 milliseconds but materially improves the product may be a good trade. A data pipeline that uses more memory but removes a manual operations step may be worth it. Performance engineering is not the work of saying no to every new cost.
+
+The real issue is that every new cost enters a shared budget. Latency budgets, infrastructure budgets, concurrency limits, cache capacity, database headroom, browser main-thread time, and developer attention are all finite. A single small regression may not matter. A hundred small regressions can turn a healthy system into one that feels slow, costs too much, or no longer has enough headroom for traffic spikes.
+
+## Performance engineering has always been the counterweight
+
+Feature development and performance engineering pull on the system in different directions.
+
+Feature work tends to add behavior. That behavior often adds resource usage.
+
+Performance work finds ways to recover capacity. It removes unnecessary work, improves algorithms, changes data access patterns, adds caching where it is justified, reduces allocation pressure, shrinks payloads, tunes concurrency, and helps teams understand where the system is spending time.
+
+The balance matters. If a team keeps adding features without investing in performance, the system eventually becomes slower, more expensive, and harder to scale. If a team over-invests in performance too early, it burns engineering time optimizing paths that may not matter, or that may change before the optimization pays for itself.
+
+A healthy engineering organization keeps those forces in tension. It ships useful product changes while doing enough performance work to keep the user experience, operating cost, and system headroom within acceptable bounds.
+
+## Agentic development changes the rate of regression
+
+The interesting change with agentic AI development is not whether an agent writes better or worse code than a human. That debate matters, but it is not the core performance issue here.
+
+The core issue is throughput.
+
+If agents help teams produce more pull requests, more experiments, more generated glue code, more migrations, and more product variations, then the system absorbs more logic per unit of time. More logic means more chances to add latency, allocate memory, increase bundle size, add database queries, create cache misses, or make production behavior harder to predict.
+
+Even when every individual change is reviewed and reasonable, the aggregate effect can become unbalanced. The old cadence of performance engineering may have been tuned for a slower development loop. If the feature loop speeds up and the performance loop does not, regressions accumulate faster.
+
+That is the part many teams will feel first. Not one catastrophic performance bug, but a faster drift away from the performance baseline they thought they had.
+
+## The compounding effect is the real failure mode
+
+Major regressions are painful, but they are often easier to handle. A deploy causes p95 latency to jump, CPU to spike, or error rates to climb. The canary fails. The team rolls back. Someone investigates the obvious culprit.
+
+Small regressions are harder.
+
+A page gets 2 percent slower. A service allocates slightly more memory per request. A background job scans a little more data. A new abstraction adds one more network round trip in an edge case. None of these changes look urgent. Many will pass code review because the code is functionally correct and the performance impact is not visible in the review context.
+
+The damage appears later. The system has less headroom. Scaling events become more expensive. Traffic spikes are harder to absorb. The next feature has less budget available. Eventually the team has to stop and run a performance cleanup effort, which is usually more expensive than catching the regressions earlier.
+
+Agentic development can make this happen faster because it can increase the number of small changes moving through the system.
+
+## Performance feedback has to move closer to the change
+
+The answer is not to ask developers to slow down every time they use a coding agent. That gives up the main advantage of the workflow.
+
+The answer is to make performance feedback faster, more automated, and closer to the places where regressions are introduced. Some of that feedback can move left into development and CI. Some of it has to stay in production-like environments because many performance issues only appear with real traffic, real data, and real dependency behavior.
+
+A useful performance system needs multiple loops, each with a clear job.
+
+| Feedback loop | What it can catch | Where it breaks down |
+| --- | --- | --- |
+| Microbenchmarks in CI | Hot functions, parsers, algorithms, serialization paths, and isolated utility regressions | They miss distributed behavior, real data shape, and production contention |
+| Regression checks during CI | Changes in request handlers, query builders, package size, or other repeatable paths | They need stable environments and careful thresholds to avoid noise |
+| Canary analysis | Production-visible latency, error rates, resource usage, and saturation signals during rollout | It requires safe rollout controls, enough traffic, and good rollback automation |
+| Continuous profiling | CPU, memory allocation, lock contention, and hot paths over time | It needs retention, sampling discipline, and people or tools that can interpret profiles |
+| Automated profile analysis | Repeated hotspots, changed call paths, and likely optimization candidates | It can produce misleading recommendations without workload context |
+
+No single loop is enough. CI is fast, but it is a simplified environment. Production can reveal real behavior, but it should not be the first place a preventable regression is noticed. Continuous profiling gives deep evidence, but it does not automatically tell the team which trade-off is worth making.
+
+The goal is not perfect prediction. The goal is to shorten the time between introducing a regression and seeing enough evidence to act on it.
+
+## CI should catch the boring regressions
+
+Some performance regressions are local enough that they should not survive CI.
+
+If a change makes a parser 40 percent slower on a representative input, that should be visible before merge. If a dependency increases the client bundle by a large amount, that should be visible before merge. If a commonly used function starts allocating much more memory, a benchmark can catch it. If a database query builder starts emitting a worse query shape for a common path, a regression test can make that visible.
+
+This is where microbenchmarking and small performance checks are useful. They do not prove the whole system will be fast in production. They give agents and humans a quick feedback loop for the parts of the system that are repeatable.
+
+That feedback loop matters even more when agents are making changes. A coding agent can iterate quickly when the test signal is clear. If the benchmark fails, the agent can inspect the change, try a different implementation, and rerun the measurement. Without that signal, the agent may produce functionally correct code that quietly spends more resources than the system can afford.
+
+The hard part is keeping these checks targeted. A slow, noisy performance suite becomes another thing developers learn to ignore. CI performance checks should focus on paths where the workload is stable enough and the signal is strong enough to be useful.
+
+## Production validation still matters
+
+Many important regressions cannot be reproduced accurately in CI.
+
+Distributed systems depend on real traffic shape, cache state, data distribution, dependency latency, noisy neighbors, deployment topology, and user behavior. A benchmark that looks clean in isolation can still fail when it meets production reality.
+
+That is why canary analysis and progressive rollout become more important, not less. If development speeds up, the rollout system has to become better at detecting regressions quickly and limiting blast radius.
+
+A good canary process should compare the new version against a meaningful baseline, watch user-facing latency and resource signals, and stop or roll back automatically when the change violates the agreed threshold. It should also collect enough context for follow-up work: which endpoints changed, which profiles shifted, which queries increased, which downstream calls moved.
+
+This is not just reliability work. It is performance engineering work. A team that ships faster needs a production validation loop that can keep up with that speed.
+
+## Continuous profiling turns regressions into evidence
+
+Metrics tell you that something changed. Profiles help explain where the time or resources went.
+
+Continuous profiling is useful because it preserves evidence across deploys, traffic levels, and workload changes. Instead of waiting for a performance incident and then trying to reproduce it, the team can compare profiles over time and inspect what changed around a deployment.
+
+That comparison is where agentic workflows become interesting. An automated system can look for changed hot paths, new allocation-heavy code, increased time under specific call stacks, or functions that became important after a release. It can summarize likely causes and point a human or another agent toward the code that needs attention.
+
+The important word is likely. Profiles still need context. A function may become hotter because a new feature is legitimately used more often. A path may allocate more because it now returns richer data that users need. The system should help engineers ask better questions, not pretend every increase is a bug.
+
+## Agents can help with optimization when the loop is measurable
+
+Performance optimization is a search problem constrained by correctness, maintainability, and workload reality. That makes it a reasonable place to use agents, but only when the feedback loop is clear.
+
+An agent can try an alternative implementation, run a microbenchmark, compare the result, and keep or discard the change. It can inspect profiles, propose likely bottlenecks, add a benchmark for a hot path, or summarize the difference between two deployment profiles.
+
+But this only works when the measurement is trustworthy. If the benchmark is unrealistic, the agent will optimize for the wrong thing. If the canary signal is noisy, the agent may chase random variation. If the profile is missing important workload context, it may suggest changes that make the code worse for the real system.
+
+The same rule that has always applied to performance work still applies here: the measurement defines the optimization. Faster iteration does not compensate for a bad measurement loop.
+
+## What changes for performance engineering teams
+
+If agentic development increases the rate of change, performance engineering has to become less episodic.
+
+The old pattern was often reactive: wait for a complaint, run an investigation, optimize a few hot spots, and move on. That will not be enough if small regressions arrive continuously.
+
+The newer pattern has to look more like an always-on system:
+
+1. Define the performance budgets that matter for the product.
+2. Add targeted CI checks for repeatable, high-value paths.
+3. Use canaries and automated rollback for production-visible regressions.
+4. Keep continuous profiles so regressions can be explained after they are detected.
+5. Let agents assist with benchmark creation, profile analysis, and candidate optimizations.
+6. Review the recommendations through the same trade-off lens used for any performance work.
+
+This does not mean every team needs a giant performance platform. It means the feedback loop has to match the development loop. If the organization can now produce changes faster, it needs faster ways to notice when those changes consume too much of the system budget.
+
+## Where this approach still falls short
+
+There are real limits.
+
+Performance budgets are hard to define for systems with many user journeys. Microbenchmarks can create false confidence. Canary analysis can miss low-traffic paths. Continuous profiling can generate more data than a team has time to interpret. Automated profile analysis can suggest optimizations that are technically clever but not worth the complexity.
+
+There is also an organizational limit. Performance work competes with product work. The goal is not to turn every engineer into a full-time performance specialist. The goal is to make the most important regressions visible early enough that the team can make deliberate trade-offs.
+
+That means some regressions will still be accepted. Some features are worth the cost. Some optimizations are not worth the complexity. Some cleanup can wait. The improvement is not that performance engineering becomes automatic. The improvement is that the cost of change becomes visible faster.
+
+## Start by instrumenting the next regression
+
+The practical place to start is not a full performance transformation. Start with the next regression you already understand.
+
+If it was a hot function, add a microbenchmark. If it was a bad query shape, add a regression check around query generation or execution plan behavior. If it only appeared during rollout, improve the canary signal and rollback threshold. If the team spent hours guessing where time went, add or improve continuous profiling for that service.
+
+Then make the loop available to both humans and agents.
+
+Agentic development will keep pushing teams to ship faster. Performance engineering has to respond by making regressions cheaper to find, cheaper to explain, and cheaper to reverse. Otherwise the speed gained in development will eventually be paid back as latency, infrastructure cost, and emergency cleanup work.
