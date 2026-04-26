@@ -1,0 +1,201 @@
+---
+title: "Performance Regressions in Agentic AI Development: A Systems View"
+publishDate: 2026-04-11T00:00:00-05:00
+description: "Agentic development can increase the rate of performance change. The response is not slower development, but better measurement: budgets, benchmarks, canaries, and continuous profiling."
+tags:
+  - performance-engineering
+  - agentic-ai
+  - continuous-profiling
+  - observability
+draft: true
+---
+
+Agentic AI development changes a performance variable that is easy to miss: the rate of code change. If a team can add features, branches, abstractions, migrations, and integrations faster, then it can also add latency, CPU consumption, memory pressure, I/O, and tail risk faster.
+
+This does not require the generated code to be bad. It only requires more code to land.
+
+The performance question is not "are agents good or bad?" The useful question is narrower:
+
+> Has the rate of performance regression increased, and do we have measurement loops fast enough to see it?
+
+For many systems, the answer will be no. The development loop has become faster than the performance feedback loop.
+
+## Software usually gets slower one reasonable change at a time
+
+Most performance regressions are not spectacular. They do not look like a broken deploy. They look like reasonable product work.
+
+A request handler loads one more object. A page adds another client-side dependency. A service records richer telemetry. A workflow checks another permission. A query joins another table. An API response includes a nested field that used to be lazy. A model call adds a validation step. Each change has a reason.
+
+The individual cost may be small:
+
+| Change | Possible cost |
+| --- | --- |
+| More business logic | More CPU per request |
+| More data returned | More allocation, serialization, and network time |
+| More abstraction | More call depth and less obvious control flow |
+| More dependencies | More initialization, bundle size, and supply-chain surface |
+| More service calls | More latency variance and failure modes |
+| More observability | More write amplification and storage cost |
+
+This is normal. Product behavior consumes resources. The problem is not that features have cost. The problem is when the cost is not measured until it has accumulated.
+
+## The regression budget is finite
+
+Systems have performance budgets whether teams name them or not.
+
+There is only so much CPU headroom before autoscaling becomes expensive or saturation begins. There is only so much memory before garbage collection, paging, or container limits become visible. There is only so much database capacity before queueing starts. There is only so much latency before the product feels worse.
+
+Performance engineering is the work of keeping those budgets visible and usable.
+
+That means the performance engineer is often balancing two forces:
+
+1. Feature work adds useful behavior and usually consumes more resources.
+2. Performance work removes waste and recovers headroom.
+
+The balance is the important part. Optimize too little and the system gets slow or expensive. Optimize too much and the team spends time polishing paths that do not matter. The job is not to remove all cost. The job is to know which costs are justified, which are accidental, and which are now too large for the budget.
+
+Agentic development changes the balance because it can increase the arrival rate of changes.
+
+## Faster code generation means faster performance drift
+
+Performance drift is often a slow failure mode. A service does not become expensive in one deploy. A page does not become heavy in one dependency. A database does not lose headroom from one query. The system moves away from its baseline through many small deltas.
+
+Agentic development compresses the time scale.
+
+If agents help a team produce more pull requests per week, generate more glue code, explore more product variants, and automate more migrations, then the system sees more performance-affecting changes per week. Even if review quality is unchanged, the number of opportunities for regression goes up.
+
+The old performance process may have been calibrated for a slower world:
+
+1. Ship features for a while.
+2. Notice cost, latency, or capacity pressure.
+3. Investigate hot paths.
+4. Optimize the worst offenders.
+5. Repeat later.
+
+That loop can still work when drift is slow. It breaks down when drift accelerates. By the time the team notices the problem, the regression may be distributed across dozens of changes. No single diff looks guilty. The system is simply heavier.
+
+## Start with the measurements, not the agent
+
+The first mistake is to make this a code authorship problem. Human-written code can regress performance. Agent-written code can regress performance. Copy-pasted code can regress performance. Well-reviewed code can regress performance.
+
+Performance engineering starts with observation.
+
+For a service, a useful first pass is still basic:
+
+| Resource | Question |
+| --- | --- |
+| CPU | Are we doing more work per request? |
+| Memory | Are allocations, heap size, or garbage collection increasing? |
+| Disk | Are reads, writes, or fsyncs increasing? |
+| Network | Are payload size, fanout, or dependency calls increasing? |
+
+For a user-facing path, add latency distribution, page weight, main-thread time, and interaction delay. For a data system, add query plans, scanned rows, queue depth, cache hit rate, and compaction or background work. For an AI path, add token counts, model calls, retries, tool calls, and serialization overhead.
+
+The method is boring because it should be boring: define the resource, measure it, compare it to a baseline, and investigate the largest change.
+
+## CI should catch deterministic regressions
+
+Some regressions are easy enough to catch before merge.
+
+If a parser gets slower on a stable corpus, benchmark it. If a serializer allocates more memory for the same payload, measure it. If a generated query shape gets worse, test it. If a client bundle grows, fail the check or at least report the delta. If an endpoint has a representative local workload, run it often enough to notice a large change.
+
+These checks are not a production simulator. They are guardrails for deterministic paths.
+
+Good CI performance checks have a few properties:
+
+1. They measure a path that matters.
+2. They use a workload that is stable enough to compare.
+3. They report deltas, not just pass or fail.
+4. They have thresholds that avoid random noise.
+5. They are fast enough to stay in the development loop.
+
+This is especially useful with coding agents. Agents can use clear measurement feedback. "The benchmark is 18 percent slower" is a better signal than "this might be inefficient." With a measurable target, an agent can try an alternative, rerun the benchmark, and either keep the improvement or discard the change.
+
+Without that signal, the review process is left to infer performance from code shape. That is a weak method. Many expensive changes look harmless in a diff.
+
+## Production still has the real workload
+
+CI can catch deterministic regressions. It cannot fully model production.
+
+Production has the real data distribution, dependency latency, cache behavior, traffic mix, noisy neighbors, connection pools, kernel behavior, and user paths. Many performance bugs only exist there.
+
+That makes canary analysis part of the performance system.
+
+A canary should answer a small set of questions quickly:
+
+1. Did user-visible latency change?
+2. Did CPU, memory, I/O, or network usage change?
+3. Did dependency fanout or downstream latency change?
+4. Did error rate, timeout rate, or retry behavior change?
+5. Did saturation move closer?
+
+The canary should compare against a baseline, not against vibes. It should also be able to stop the rollout. Detection without rollback is only an alerting system. Detection with automated rollback is a control system.
+
+This matters more as development speeds up. If many changes are landing, the rollout system has to be able to reject the expensive ones before they become everyone else's baseline.
+
+## Continuous profiling explains where the budget went
+
+Metrics can show that CPU went up. They usually do not explain why.
+
+Profiles are the evidence trail. CPU profiles show where time is spent. Allocation profiles show where memory is created. Lock or off-CPU profiles can show where time is lost waiting. Differential profiles can show what changed between versions.
+
+This is where continuous profiling becomes more useful than ad hoc profiling. If the profile exists before the incident, the team can compare before and after. They do not have to reproduce the exact workload later, when caches, data, traffic, and deploy state have changed.
+
+For agentic development, this creates a better loop:
+
+1. A change lands.
+2. Canary analysis detects a resource or latency delta.
+3. Continuous profiling shows the changed hot path.
+4. An engineer or agent proposes a smaller fix.
+5. The fix is measured against the same workload.
+
+The profile does not make the decision. It reduces the search space.
+
+## Automated analysis should produce hypotheses, not conclusions
+
+There is a tempting version of this story where an agent watches profiles, finds the hot path, rewrites the code, proves the benchmark, and ships the fix. That will work sometimes.
+
+It will also fail sometimes.
+
+Performance data needs workload context. A function can become hotter because the feature is now used more often. Allocations can increase because the response includes valuable new data. CPU can go up because the system is doing more validation that prevents a worse failure later. A query can be slower on average but better for a critical tail case.
+
+Automated analysis should therefore be treated as hypothesis generation.
+
+Useful output looks like this:
+
+1. "CPU per request increased after this deploy."
+2. "The increase is concentrated in this call path."
+3. "This function now allocates a larger object per request."
+4. "This query now scans more rows for this workload."
+5. "Here are two candidate changes and the risks of each."
+
+That is enough to make engineering review faster. It is not enough to skip review.
+
+## The performance loop has to match the development loop
+
+The practical response to agentic development is not to slow every developer down. It is to shorten the performance feedback loop.
+
+For small, deterministic paths, move measurement into CI. For production behavior, use canaries with rollback. For investigation, keep continuous profiles. For optimization search, use agents where the measurement is reliable.
+
+A reasonable operating model looks like this:
+
+| Stage | Performance job |
+| --- | --- |
+| Development | Add or update benchmarks for hot paths and generated code |
+| CI | Report performance deltas for stable workloads |
+| Review | Treat large resource deltas as design changes |
+| Canary | Compare latency and resource usage against baseline |
+| Production | Keep continuous profiles for post-deploy comparison |
+| Follow-up | Use profiles to guide optimization work |
+
+This turns performance from an occasional cleanup activity into a continuous feedback system.
+
+## What to do next
+
+Pick one recent regression and make it hard to repeat.
+
+If the regression was CPU, add a benchmark or a profile comparison. If it was memory, add allocation visibility. If it was a query, preserve the query shape or execution-plan expectation. If it was only visible in production, improve canary coverage for that path. If nobody knew where the time went, add continuous profiling before the next incident.
+
+Then make that signal available to the same agents that are helping write the code.
+
+Agentic development increases the rate at which systems change. Performance engineering has to increase the rate at which systems are measured. Otherwise the development speedup will be paid back later as latency, capacity loss, cloud cost, and emergency optimization work.
